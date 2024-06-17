@@ -10,7 +10,7 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see         https://docs.woocommerce.com/document/template-structure/
+ * @see         https://woocommerce.com/document/template-structure/
  * @package     WooCommerce\Templates
  * @version     3.0.0
  */
@@ -21,32 +21,31 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( $upsells ) : ?>
 
-	<section class="up-sells upsells products pb-5">
-		<div class="container-lg">
-			<?php
-			$heading = apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'woocommerce' ) );
+	<section class="up-sells upsells products">
+		<?php
+		$heading = apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'woocommerce' ) );
 
-			if ( $heading ) :
+		if ( $heading ) :
+			?>
+			<h2><?php echo esc_html( $heading ); ?></h2>
+		<?php endif; ?>
+
+		<?php woocommerce_product_loop_start(); ?>
+
+			<?php foreach ( $upsells as $upsell ) : ?>
+
+				<?php
+				$post_object = get_post( $upsell->get_id() );
+
+				setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
+
+				wc_get_template_part( 'content', 'product' );
 				?>
-				<h2><?php echo esc_html( $heading ); ?></h2>
-			<?php endif; ?>
 
-			<?php woocommerce_product_loop_start(); ?>
+			<?php endforeach; ?>
 
-				<?php foreach ( $upsells as $upsell ) : ?>
+		<?php woocommerce_product_loop_end(); ?>
 
-					<?php
-					$post_object = get_post( $upsell->get_id() );
-
-					setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
-
-					wc_get_template_part( 'content', 'product' );
-					?>
-
-				<?php endforeach; ?>
-
-			<?php woocommerce_product_loop_end(); ?>
-		</div>
 	</section>
 
 	<?php

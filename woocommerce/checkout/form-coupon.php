@@ -10,7 +10,7 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see https://docs.woocommerce.com/document/template-structure/
+ * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 7.0.1
  */
@@ -28,14 +28,16 @@ if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
 
 <form class="checkout_coupon woocommerce-form-coupon" method="post" style="display:none">
 
-	<div class="d-flex flex-wrap">
-		<div class="pr-sm-1 coupon-col-1-sn">
-			<input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" id="coupon_code" value="" />
-		</div>
-		<div class="coupon-col-2-sn">
-			<button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Zastosuj', 'web14devsn' ); ?>"><?php esc_html_e( 'Zastosuj', 'web14devsn' ); ?></button>
-		</div>
-	</div>
+	<p><?php esc_html_e( 'If you have a coupon code, please apply it below.', 'woocommerce' ); ?></p>
+
+	<p class="form-row form-row-first">
+		<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label>
+		<input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" id="coupon_code" value="" />
+	</p>
+
+	<p class="form-row form-row-last">
+		<button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></button>
+	</p>
 
 	<div class="clear"></div>
 </form>

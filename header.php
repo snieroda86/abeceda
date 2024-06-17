@@ -25,31 +25,127 @@
 <div id="page" class="site">
 
 	<header id="masthead" class="site-header">
+
+		<div class="header-top-bar">
+			<div class="container-lg">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="header-contact-box d-flex">
+							<!-- Phone  -->
+							<div class="contact-item-sn d-flex me-4">
+								<div class="d-flex align-items-center pe-2">
+									<img src="<?php echo PATH_SN ?>/uploads/mobile.svg" alt="Phone">
+								</div>
+								<div>
+									<p>+48 8883838</p>
+								</div>
+							</div>
+							<!-- Email -->
+							<div class="contact-item-sn d-flex">
+								<div class="d-flex align-items-center pe-2">
+									<img src="<?php echo PATH_SN ?>/uploads/envelope.svg" alt="Email">
+								</div>
+								<div>
+									<p><a href="mailto:sklep@abeceda.pl">sklep@abeceda.pl</a></p>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					<div class="col-md-8"></div>
+				</div>
+			</div>
+		</div>
 		
-		<nav class="navbar navbar-expand-lg navbar-light p-0" role="navigation">
-		    <div class="container-lg navbar-container-sn">
+		<nav class="navbar navbar-expand-md navbar-light d-block">
+		    <div class="header-middle-bar">
+		    	<div class="container-lg">
+		    		<div class="row">
+			    		<div class="col-12 d-flex flex-wrap align-items-center">
+			    			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+				            <span class="navbar-toggler-icon"></span>
+				        </button>
+				        <div class="site-logo"> 
+				        	<?php 
+					        if ( function_exists( 'the_custom_logo' ) ) {
+								the_custom_logo();
+							}
+					        ?>	
+				        </div>
 
-			  	<?php if (!is_plugin_active('megamenu/megamenu.php')): ?>
-			    <!-- Brand and toggle get grouped for better mobile display -->
-			    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#sn-navbar-collapse-1" aria-controls="sn-navbar-collapse-1" aria-expanded="false" aria-label="<?php esc_attr_e( 'Przełacz menu', 'web14devsn' ); ?>">
-			        <span class="navbar-toggler-icon"></span>
-			    </button>
-			    
-			        <?php
-			        wp_nav_menu( array(
-			            'theme_location'    => 'menu-primary',
-			            'depth'             => 2,
-			            'container'         => 'div',
-			            'container_class'   => 'collapse navbar-collapse',
-			            'container_id'      => 'sn-navbar-collapse-1',
-			            'menu_class'        => 'nav navbar-nav',
-			            'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-			            'walker'            => new WP_Bootstrap_Navwalker(),
-			        ) );
-			        ?>
+				        <div class="header-search-bar">
+				        	<?php echo do_shortcode('[fibosearch]'); ?>
+				        </div>	
+					    <?php if ( class_exists( 'woocommerce' ) ): ?>
+				        	<div class="header-shop-icons d-flex align-items-center">
+					        	<div class="header-shop-icon-item">
+					        		<?php $account_page_url = get_permalink( get_option('woocommerce_myaccount_page_id')); ?>
+					        		<?php if($account_page_url): ?>
+					        			<a href="<?php echo esc_url($account_page_url); ?>" class="d-block">
+					        				<div class="text-center">
+					        					<img src="<?php echo PATH_SN ?>/uploads/user.svg" alt="User">
+					        				</div>
+					        				<div>
+					        					<p class="text-center">
+					        						<?php _e('Profil' , 'web14devsn'); ?>
+					        					</p>
+					        				</div>
+					        			</a>
+					        		<?php endif; ?>
+					        	</div>
+					        	<div class="header-shop-icon-item">
+					        		<?php if ( is_active_sidebar( 'h-widget-1' ) ) { ?>
+									    <?php dynamic_sidebar('h-widget-1'); ?>
+									<?php } ?>
+					        	</div>
+					        	<div class="header-shop-icon-item">
+					        		<a href="#" class="d-block">
+				        				<div class="text-center pos-relative">
+				        					<img src="<?php echo PATH_SN ?>/uploads/shopping-bag.png" alt="bag">
+				        					<div class="header-cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></div>
+				        				</div>
+				        				<div>
+				        					<p class="text-center">
+				        						<?php _e('Koszyk' , 'web14devsn'); ?>
+				        					</p>
+				        				</div>
+				        			</a>
+					        	</div>
+					        </div>
 
-			    <?php endif; ?>
+				        <?php else: ?>
+				        	<small><?php _e('Woocommerce plugin in not activated' , 'web14devsn'); ?></small>
+				    	<?php endif; ?>
+				       
+			    		</div>
+			    	</div>	
+		    	</div>
+		    	
+		    </div>
 
+		    <div class="header-bottom-bar">
+		    	<div class="container-lg">
+		    		<!-- Menu -->
+			    	<div class="row">
+			    		<div class="col-12">
+			    			<div class="collapse navbar-collapse" id="main-menu">
+					            <?php
+					            wp_nav_menu(array(
+					                'theme_location' => 'menu-primary',
+					                'container' => false,
+					                'menu_class' => '',
+					                'fallback_cb' => '__return_false',
+					                'items_wrap' => '<ul id="%1$s" class="navbar-nav m-auto  %2$s">%3$s</ul>',
+					                'depth' => 2,
+					                'walker' => new bootstrap_5_wp_nav_menu_walker()
+					            ));
+					            ?>
+					        </div>
+			    		</div>
+			    	</div>	
+		    	</div>
+		    	
+		    </div>
 		    </div>
 		    
 		</nav>

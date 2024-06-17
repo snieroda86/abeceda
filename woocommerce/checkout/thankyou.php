@@ -10,7 +10,7 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see https://docs.woocommerce.com/document/template-structure/
+ * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 8.1.0
  *
@@ -20,34 +20,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<div class="woo-pages-steps-sn">
-	<div class="row">
-		<div class="col-md-4 col-sm-4 col-xs-12">
-			<div class="woo-steps-step ">
-				<p><?php _e('Koszyk' , 'web14devsn'); ?></p>
-			</div>
-		</div>
-
-		<div class="col-md-4 col-sm-4 col-xs-12">
-			<div class="woo-steps-step ">
-				<p><?php _e('Zamówienie' , 'web14devsn'); ?></p>
-			</div>
-		</div>
-
-		<div class="col-md-4 col-sm-4 col-xs-12">
-			<div class="woo-steps-step active">
-				<p><?php _e('Podsumowanie' , 'web14devsn'); ?></p>
-			</div>
-		</div>
-	</div>
-</div>
-
-
 <div class="woocommerce-order">
-
-	<?php if ( $order->has_status( 'failed' ) ) : ?>
-		<h2>Zamowienie złożone ale płanośc nie powiodła się</h2>
-	<?php endif; ?>
 
 	<?php
 	if ( $order ) :
@@ -107,7 +80,6 @@ defined( 'ABSPATH' ) || exit;
 
 		<?php do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() ); ?>
 		<?php do_action( 'woocommerce_thankyou', $order->get_id() ); ?>
-
 
 	<?php else : ?>
 

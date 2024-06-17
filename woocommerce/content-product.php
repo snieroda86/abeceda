@@ -10,7 +10,7 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see     https://docs.woocommerce.com/document/template-structure/
+ * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.6.0
  */
@@ -41,30 +41,20 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 */
 	do_action( 'woocommerce_before_shop_loop_item_title' );
 
-	?>
-	<div class="product-data-sn">
-		<?php 
+	/**
+	 * Hook: woocommerce_shop_loop_item_title.
+	 *
+	 * @hooked woocommerce_template_loop_product_title - 10
+	 */
+	do_action( 'woocommerce_shop_loop_item_title' );
 
-		/**
-		 * Hook: woocommerce_shop_loop_item_title.
-		 *
-		 * @hooked woocommerce_template_loop_product_title - 10
-		 */
-		do_action( 'woocommerce_shop_loop_item_title' );
-
-		/**
-		 * Hook: woocommerce_after_shop_loop_item_title.
-		 *
-		 * @hooked woocommerce_template_loop_rating - 5
-		 * @hooked woocommerce_template_loop_price - 10
-		 */
-		do_action( 'woocommerce_after_shop_loop_item_title' );
-
-		?>
-	</div>
-	
-
-	<?php 
+	/**
+	 * Hook: woocommerce_after_shop_loop_item_title.
+	 *
+	 * @hooked woocommerce_template_loop_rating - 5
+	 * @hooked woocommerce_template_loop_price - 10
+	 */
+	do_action( 'woocommerce_after_shop_loop_item_title' );
 
 	/**
 	 * Hook: woocommerce_after_shop_loop_item.

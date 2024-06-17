@@ -30,7 +30,7 @@ function jsmin(){
 
 function watchTasks(){
 	browserSync.init({
-	    proxy: "http://localhost/bylorencowa"
+	    proxy: "http://localhost/abeceda"
 	});
 
 	// sledzone pliki

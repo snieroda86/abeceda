@@ -9,7 +9,9 @@ body{
 .container-lg{
   max-width: 1440px !important;
 }
-
+.pos-relative{
+  position: relative;
+}
 
 h1,h2,h3,h4,h5,h6,p,input,li,button,span,a,strong,table,th,td{
   font-family: $main-font;

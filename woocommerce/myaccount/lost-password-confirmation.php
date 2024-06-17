@@ -10,49 +10,18 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see     https://docs.woocommerce.com/document/template-structure/
+ * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.9.0
  */
 
-defined( 'ABSPATH' ) || exit; ?>
+defined( 'ABSPATH' ) || exit;
 
+wc_print_notice( esc_html__( 'Password reset email has been sent.', 'woocommerce' ) );
+?>
 
-<div class="row custom-login-page-sn">
-    <div class="col-md-6 min-h-100">
-        
-        <div class="custom-login-form-wrapper">
-            <div>
-                <h1  class="text-center"><?php _e('Zapomniane hasło' , 'web14devsn'); ?></h1>
-            </div>
+<?php do_action( 'woocommerce_before_lost_password_confirmation_message' ); ?>
 
+<p><?php echo esc_html( apply_filters( 'woocommerce_lost_password_confirmation_message', esc_html__( 'A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.', 'woocommerce' ) ) ); ?></p>
 
-            <div class="password-area-content p-3">
-               <?php wc_print_notice( esc_html__( 'Password reset email has been sent.', 'woocommerce' ) ); ?>
-
-                <?php do_action( 'woocommerce_before_lost_password_confirmation_message' ); ?>
-
-                <p><?php echo esc_html( apply_filters( 'woocommerce_lost_password_confirmation_message', esc_html__( 'A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.', 'woocommerce' ) ) ); ?></p>
-
-                <?php do_action( 'woocommerce_after_lost_password_confirmation_message' ); ?>
-            </div>
-        </div>
-
-
-
-    </div>
-    <div class="col-md-6  login-bg-image"  style="background-image: url(<?php echo PATH_SN ?>/uploads/registration-2.jpg);background-size: cover;background-position: center center;">
-        
-    </div>
-
-</div>
-
-
-
-
-
-
-
-
-
-
+<?php do_action( 'woocommerce_after_lost_password_confirmation_message' ); ?>

@@ -53,7 +53,7 @@ if ( ! function_exists( 'web14devsn_setup' ) ) :
 		register_nav_menus(
 			array(
 				'menu-primary' => esc_html__( 'Menu główne', 'web14devsn' ),
-				'menu-top-header' => esc_html__( 'Menu top', 'web14devsn' ),
+				'menu-top-header' => esc_html__( 'Top menu', 'web14devsn' ),
 
 				// 'menu-footer-1' => esc_html__( 'Menu footer 1', 'web14devsn' ),
 				// 'menu-footer-1' => esc_html__( 'Menu footer 1', 'web14devsn' ),
@@ -209,6 +209,19 @@ function web14devsn_widgets_init() {
 		)
 	);
 
+	// Wishlist icon 
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Lista życzeń', 'web14devsn' ),
+			'id'            => 'h-widget-1',
+			'description'   => esc_html__( '', 'web14devsn' ),
+			'before_widget' => '<section id="%1$s" class="header-widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+
 
 
 }
@@ -220,10 +233,7 @@ add_action( 'widgets_init', 'web14devsn_widgets_init' );
 function web14devsn_scripts() {
 	// Fonts
 	
-   wp_enqueue_style( 'poppins-google-fonts', 'https://fonts.googleapis.com/css2?family=Poppins&display=swap', false );
-
-   wp_enqueue_style( 'lora-google-fonts', 'https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap', false );
-
+   wp_enqueue_style( 'montserrat-google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap', false );
    
 	wp_enqueue_style( 'web14devsn-style-bootstrap', get_template_directory_uri().'/bootstrap/css/bootstrap.min.css', array(), _S_VERSION );
 	
@@ -232,6 +242,8 @@ function web14devsn_scripts() {
 	wp_enqueue_style( 'web14devsn-style-css', get_template_directory_uri().'/dist/css/style.css', array(), _S_VERSION );
 
 	// Add js scripts
+	wp_enqueue_script( 'web14devsn-popper-js', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js', array("jquery"), _S_VERSION, true );
+
 	wp_enqueue_script( 'web14devsn-bootstrap-js', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array("jquery"), _S_VERSION, true );
 
 	wp_enqueue_script( 'web14devsn-js-slick',get_template_directory_uri().'/plugins/slick-slider/slick.min.js', array("jquery"), _S_VERSION , true);
@@ -253,6 +265,8 @@ add_filter( 'use_widgets_block_editor', '__return_false' );
  */
 function register_navwalker(){
 	require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+	require_once get_template_directory() . '/bootstrap_5_wp_nav_menu_walker.php';
+
 }
 add_action( 'after_setup_theme', 'register_navwalker' );
 
@@ -285,7 +299,7 @@ function my_acf_json_save_point( $path ) {
 include get_stylesheet_directory().'/inc/woocommerce.php';
 
 // Custom shortcodes
-include get_stylesheet_directory().'/inc/shortcodes.php';
+// include get_stylesheet_directory().'/inc/shortcodes.php';
 
 
 // Change the default excerpt length to 20 words.

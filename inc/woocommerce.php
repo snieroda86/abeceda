@@ -1,0 +1,15 @@
+<?php
+/*
+** Woocommerce customization 
+*/
+
+// Update cart count
+add_filter( 'woocommerce_add_to_cart_fragments', 'iconic_cart_count_fragments', 10, 1 );
+
+function iconic_cart_count_fragments( $fragments ) {
+    
+    $fragments['div.header-cart-count'] = '<div class="header-cart-count">' . WC()->cart->get_cart_contents_count() . '</div>';
+    
+    return $fragments;
+    
+}

@@ -10,7 +10,7 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see         https://docs.woocommerce.com/document/template-structure/
+ * @see         https://woocommerce.com/document/template-structure/
  * @package     WooCommerce\Templates
  * @version     3.9.0
  */
@@ -21,8 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( $related_products ) : ?>
 
-	<section class="related products section-bg-grey ptb-60">
-		<div class="container-lg">
+	<section class="related products">
 
 		<?php
 		$heading = apply_filters( 'woocommerce_product_related_products_heading', __( 'Related products', 'woocommerce' ) );
@@ -47,7 +46,6 @@ if ( $related_products ) : ?>
 			<?php endforeach; ?>
 
 		<?php woocommerce_product_loop_end(); ?>
-		</div>
 
 	</section>
 	<?php

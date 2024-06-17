@@ -10,7 +10,7 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see     https://docs.woocommerce.com/document/template-structure/
+ * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.0.0
  */
@@ -21,16 +21,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product;
 
-if ($product->get_price()) {
-    $net_price = $product->get_price_excluding_tax();
-}
-
 ?>
-<p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'price' ) ); ?>"><span class="price-sp-label"><?php _e('Cena:' , 'web14devsn'); ?></span><span class="price-sp-val"><?php echo $product->get_price_html(); ?></span></p>
-<?php if( isset($net_price)): ?>
-<!-- Net price -->
-<p class="sp-price-excluding-tax">
-    <span class="price-sp-label"><?php _e('Cena netto:' , 'web14devsn'); ?></span>
-    <span class="price-sp-val"><?php echo wc_price($net_price); ?></span>
-</p>
-<?php endif; ?>
+<p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'price' ) ); ?>"><?php echo $product->get_price_html(); ?></p>

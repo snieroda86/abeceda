@@ -10,7 +10,7 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see     https://docs.woocommerce.com/document/template-structure/
+ * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.8.0
  */
@@ -30,7 +30,6 @@ $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 
 if ( ! empty( $product_tabs ) ) : ?>
 
-<div class="container-lg">
 	<div class="woocommerce-tabs wc-tabs-wrapper">
 		<ul class="tabs wc-tabs" role="tablist">
 			<?php foreach ( $product_tabs as $key => $product_tab ) : ?>
@@ -53,6 +52,5 @@ if ( ! empty( $product_tabs ) ) : ?>
 
 		<?php do_action( 'woocommerce_product_after_tabs' ); ?>
 	</div>
-</div>
 
 <?php endif; ?>

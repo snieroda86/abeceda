@@ -12,7 +12,7 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see     https://docs.woocommerce.com/document/template-structure/
+ * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 7.9.0
  */
@@ -61,11 +61,8 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 					<?php if ( empty( $product_permalink ) ) : ?>
 						<?php echo $thumbnail . wp_kses_post( $product_name ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					<?php else : ?>
-						<a class="minicart-img-sn" href="<?php echo esc_url( $product_permalink ); ?>">
-							<?php echo $thumbnail; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-							<span class="minicart-pname-sn">
-								<?php echo wp_kses_post( $product_name ); ?>
-							</span>
+						<a href="<?php echo esc_url( $product_permalink ); ?>">
+							<?php echo $thumbnail . wp_kses_post( $product_name ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 						</a>
 					<?php endif; ?>
 					<?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>

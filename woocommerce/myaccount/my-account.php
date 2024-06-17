@@ -10,7 +10,7 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see     https://docs.woocommerce.com/document/template-structure/
+ * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.5.0
  */
@@ -22,40 +22,15 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 2.6.0
  */
+do_action( 'woocommerce_account_navigation' ); ?>
 
-?>
-
-<div class="account-area-sn ptb-60">
-    <div class="row">
-        <div class="col-12">
-            <h1><?php single_post_title(); ?></h1>
-        </div>      
-
-    </div>
-    <div class="row">
-        <div class="col-md-4 col-lg-3 mb-4">
-            <div class="account-nav-sn">
-                <?php do_action( 'woocommerce_account_navigation' ); ?>
-                <?php $redirect_url = get_permalink( get_option('woocommerce_myaccount_page_id') ) ?>
-                <a href="<?php echo wp_logout_url( $redirect_url ); ?>" class="btn-main-sn">
-                    Wyloguj się
-                </a>
-            </div>        
-        </div>
-        <div class="col-md-8 col-lg-9">
-            <div class="account-content-sn pl-lg-5">
-                <div class="woocommerce-MyAccount-content">
-                    <?php
-                        /**
-                         * My Account content.
-                         *
-                         * @since 2.6.0
-                         */
-                        do_action( 'woocommerce_account_content' );
-                    ?>
-                </div>            
-            </div>
-        </div>
-    </div>
+<div class="woocommerce-MyAccount-content">
+	<?php
+		/**
+		 * My Account content.
+		 *
+		 * @since 2.6.0
+		 */
+		do_action( 'woocommerce_account_content' );
+	?>
 </div>
-
