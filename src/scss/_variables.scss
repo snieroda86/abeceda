@@ -1,0 +1,47 @@
+// @font-face {
+//   font-family: 'Gilmer';
+//   src: url(../../fonts/Gilmer-Heavy.otf);
+//   font-weight: 900;
+// }
+
+$main-font: 'Poppins', sans-serif;
+$orange: #F39221;
+$green: #6DB774; 
+$border-grey: #CCCCCC;
+$bg-grey: #F2F2F2;
+$text-grey: #606060;
+$border-light: #E0E0E0;
+$black: #000000;
+$product-title: #222222;
+$radius: 6px;
+$button-bg: linear-gradient(90deg, rgba(245,164,70,1) 0%, rgba(205,111,0,1) 100%);  // background: rgb(245,164,70);
+$footer-text : #8B8B8B;
+
+/*********************
+BREAKPOINTS
+*********************/
+
+ @mixin breakpoint($point) {
+  
+
+   @if $point == x-large { 
+    @media (max-width: 1650px) { @content ; }
+  }
+   @else if $point == large { 
+    @media (max-width: 1199px) { @content ; }
+  }
+   @else if $point == medium {
+     @media (max-width: 991px) { @content ; }
+  }
+    @else if $point == tablet {
+     @media (max-width: 767px) { @content ; }
+  }
+   @else if $point == phoneH {
+     @media (max-width: 576px)  { @content ; }
+  }
+  @else if $point == phoneV {
+     @media (max-width: 460px)  { @content ; }
+
+  }
+}
+ 
