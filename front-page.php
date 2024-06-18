@@ -13,7 +13,7 @@ get_header();
 
 <main id="primary" class="site-main">
     
-        <?php  // get_template_part('template-parts/home/main-slider'); ?>
+        <?php  get_template_part('template-parts/home/main-slider'); ?>
         <?php  // get_template_part('template-parts/home/features-bar'); ?>
         <?php  // get_template_part('template-parts/home/recent-products'); ?>
         <?php  // get_template_part('template-parts/home/about'); ?>

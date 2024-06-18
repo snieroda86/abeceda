@@ -17,9 +17,10 @@ h1,h2,h3,h4,h5,h6,p,input,li,button,span,a,strong,table,th,td{
   font-family: $main-font;
   padding:0;
   margin:0;
+  color: $text-color;
 }
-h1,h2 , h3 ,h4{  
-  font-weight: 600; 
+h1,h2 , h3 ,h4,h5,h6{  
+  font-weight: 700; 
 }
 
 
@@ -32,5 +33,17 @@ h2{
 h3{
   font-size: 22px;
 }
-  
+
+button , a.button , .btn{
+  background: $gradient-dark;
+  color: #fff;
+  padding:10px 25px;
+   border-radius: 30px;
+   font-family: $main-font;
+   font-weight: 600;
+
+   &:hover{
+    color: #fff;
+   }
+}
 

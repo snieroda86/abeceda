@@ -52,7 +52,21 @@
 						</div>
 						
 					</div>
-					<div class="col-md-8"></div>
+					<div class="col-md-8">
+						<div class="secondary-top-menu">
+							<?php
+				            wp_nav_menu(array(
+				                'theme_location' => 'menu-top-header',
+				                'container' => false,
+				                'menu_class' => '',
+				                'fallback_cb' => '__return_false',
+				                'items_wrap' => '<ul id="%1$s" class="top-nav m-auto  %2$s">%3$s</ul>',
+				                'depth' => 1,
+				                
+				            ));
+				            ?>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -73,7 +87,7 @@
 					        ?>	
 				        </div>
 
-				        <div class="header-search-bar">
+				        <div class="header-search-bar ms-auto">
 				        	<?php echo do_shortcode('[fibosearch]'); ?>
 				        </div>	
 					    <?php if ( class_exists( 'woocommerce' ) ): ?>
@@ -82,7 +96,7 @@
 					        		<?php $account_page_url = get_permalink( get_option('woocommerce_myaccount_page_id')); ?>
 					        		<?php if($account_page_url): ?>
 					        			<a href="<?php echo esc_url($account_page_url); ?>" class="d-block">
-					        				<div class="text-center">
+					        				<div class="text-center i-header-wrap">
 					        					<img src="<?php echo PATH_SN ?>/uploads/user.svg" alt="User">
 					        				</div>
 					        				<div>
@@ -100,7 +114,7 @@
 					        	</div>
 					        	<div class="header-shop-icon-item">
 					        		<a href="#" class="d-block">
-				        				<div class="text-center pos-relative">
+				        				<div class="text-center i-header-wrap pos-relative">
 				        					<img src="<?php echo PATH_SN ?>/uploads/shopping-bag.png" alt="bag">
 				        					<div class="header-cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></div>
 				        				</div>
