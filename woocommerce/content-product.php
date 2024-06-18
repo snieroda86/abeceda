@@ -33,6 +33,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 */
 	do_action( 'woocommerce_before_shop_loop_item' );
 
+	echo '<div class="shop_loop_image_wrap">';
 	/**
 	 * Hook: woocommerce_before_shop_loop_item_title.
 	 *
@@ -40,6 +41,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_product_thumbnail - 10
 	 */
 	do_action( 'woocommerce_before_shop_loop_item_title' );
+	echo '</div>';
 
 	/**
 	 * Hook: woocommerce_shop_loop_item_title.
@@ -48,6 +50,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 */
 	do_action( 'woocommerce_shop_loop_item_title' );
 
+	echo '<div class="shop-loop-price-rating">';
 	/**
 	 * Hook: woocommerce_after_shop_loop_item_title.
 	 *
@@ -55,7 +58,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_price - 10
 	 */
 	do_action( 'woocommerce_after_shop_loop_item_title' );
-
+	echo '</div>';
 	/**
 	 * Hook: woocommerce_after_shop_loop_item.
 	 *

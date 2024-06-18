@@ -15,7 +15,7 @@ get_header();
     
         <?php  get_template_part('template-parts/home/main-slider'); ?>
         <?php  // get_template_part('template-parts/home/features-bar'); ?>
-        <?php  // get_template_part('template-parts/home/recent-products'); ?>
+        <?php  get_template_part('template-parts/home/recent-products-slider'); ?>
         <?php  // get_template_part('template-parts/home/about'); ?>
         <?php  // get_template_part('template-parts/home/recommended-products-slider'); ?>
         <?php  // get_template_part('template-parts/home/bestsellers'); ?>
@@ -26,7 +26,7 @@ get_header();
 
 <script type="text/javascript">
   
-    // jQuery(document).ready(function($){
+    jQuery(document).ready(function($){
     //     // main-slider-sn
     //     $('.main-slider-sn').slick({
     //       dots: false,
@@ -40,52 +40,57 @@ get_header();
 
     //     // Recommended products slider
 
-    //     $('.recommended-products-sn').slick({
-    //       dots: true,
-    //       infinite: false,
-    //       speed: 300,
-    //       slidesToShow: 4,
-    //       slidesToScroll: 1,
-    //        prevArrow: $('.rec-prev'),
-    //       nextArrow: $('.rec-next'),
-    //       responsive: [
-    //         {
-    //           breakpoint: 1366,
-    //           settings: {
-    //             slidesToShow: 4,
-    //             slidesToScroll: 1,
-    //             infinite: true,
-    //             dots: true,
-    //             arrows: false
-    //           }
-    //         },
-    //         {
-    //           breakpoint: 1024,
-    //           settings: {
-    //             slidesToShow: 3,
-    //             slidesToScroll: 1,
-    //             infinite: true,
-    //             dots: true,
-    //             arrows: false
-    //           }
-    //         },
-    //         {
-    //           breakpoint: 760,
-    //           settings: {
-    //             slidesToShow: 2,
-    //             slidesToScroll: 1
-    //           }
-    //         },
-    //         {
-    //           breakpoint: 480,
-    //           settings: {
-    //             slidesToShow: 1,
-    //             slidesToScroll: 1
-    //           }
-    //         }
+        $('.recent-products-sn').slick({
+          dots: false,
+          infinite: true,
+          arrows:true,
+          speed: 300,
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          prevArrow: $('.rec-prev'),
+          nextArrow: $('.rec-next'),
+          responsive: [
+            {
+              breakpoint: 1366,
+              settings: {
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: true,
+                arrows: false
+              }
+            },
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: true,
+                arrows: false
+              }
+            },
+            {
+              breakpoint: 760,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                dots: true,
+                arrows: false
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: true,
+                arrows: false
+              }
+            }
             
-    //       ]
-    //     });
+          ]
+        });
 
 
     //     // Bestsellers - bestsellers-products-sn products
@@ -135,7 +140,7 @@ get_header();
             
     //       ]
     //     });
-    // });
+    });
 </script>
 <?php
 get_footer();

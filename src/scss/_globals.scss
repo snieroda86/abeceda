@@ -33,7 +33,20 @@ h2{
 h3{
   font-size: 22px;
 }
+.pt-100{
+  padding-top: 100px;
+}
 
+.pb-100{
+  padding-bottom: 100px;    
+}
+.pt-80{
+  padding-top: 80px;
+}
+
+.pb-80{
+  padding-bottom: 80px;  
+}
 button , a.button , .btn{
   background: $gradient-dark;
   color: #fff;
@@ -47,3 +60,59 @@ button , a.button , .btn{
    }
 }
 
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce #respond input#submit, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce input.button{
+   background: $gradient-dark;
+   color: #fff;
+   padding:14px 25px !important;
+   border-radius: 30px;
+   font-family: $main-font;
+   font-weight: 600;
+   transition: background 0.3s ease;
+   width:100%;
+   text-align: center;
+
+   &:hover{
+    color: #fff;
+    background: $gradient-light;
+   }
+}
+
+.slick-arrow{
+  @include el-center;
+  border:2px solid #1DA5BD;
+  width:40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  transition: 0.3s;
+  cursor:pointer;
+
+  &:hover{
+    background: rgba(29, 165, 189, 0.2);
+  }
+}
+
+ul.slick-dots{
+  list-style-type: none;
+  padding:0;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+
+  li{
+    margin:4px;
+    button{
+      font-size: 0;
+      border:0;
+      width:13px;
+      height: 13px;
+      padding:0;
+      border-radius: 50%;
+      background: $color-primary;
+    }
+
+    &.slick-active button{
+      background: $text-color;
+    }
+  }
+}
