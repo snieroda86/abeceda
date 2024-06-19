@@ -81,3 +81,58 @@
 .about-img{
 	border-radius: 75px 0 75px 0; 
 }
+
+// Ftr book
+
+.ftr-product-col-wrapper{
+	padding-left:25px;
+}
+.ftr-product-bg-grey{
+	min-height: 380px;
+	background: #F9F9FB;
+	border-radius: 0 80px;
+	// overflow: hidden;
+	padding-top: 25px; 
+	position: relative;
+	z-index: 2;
+
+
+	.ftr-product-left{
+		width:50%;
+		padding-right: 50px;    
+
+		.ftr-left-inner{
+			background: $gradient-light;
+			width:100%;
+			border-radius:0 80px 80px 80px; 
+			height: 100%;
+			margin-left: -15px; 
+
+			.col-ftr-50-inner{
+				width:50%;
+				padding:40px 15px;
+				text-align: center; 
+			}
+		}
+	}
+	.ftr-product-right{
+		width:50%;
+		padding: 80px 80px 80px 25px;
+ 
+	}
+	.col-50-sn{ 
+
+	}
+}
+
+.ftr-product-shadow{
+	position: absolute;
+	background: $gradient-light;
+	height: 100%;
+	// width:calc(100% - 30px);
+	border-radius:0 80px; 
+	right:30px;
+	left:15px;
+	bottom:0;
+
+}

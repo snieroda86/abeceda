@@ -18,6 +18,7 @@ get_header();
         <?php  get_template_part('template-parts/home/recommended-products-slider'); ?>
         <?php  get_template_part('template-parts/home/about'); ?>
         <?php  get_template_part('template-parts/home/blog-posts'); ?>
+        <?php  get_template_part('template-parts/home/feature-product'); ?>
         <?php  // get_template_part('template-parts/home/recommended-products-slider'); ?>
         <?php  // get_template_part('template-parts/home/bestsellers'); ?>
         

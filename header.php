@@ -97,7 +97,7 @@
 					        		<?php if($account_page_url): ?>
 					        			<a href="<?php echo esc_url($account_page_url); ?>" class="d-block">
 					        				<div class="text-center i-header-wrap">
-					        					<img src="<?php echo PATH_SN ?>/uploads/user.svg" alt="User">
+					        					<img src="<?php echo PATH_SN ?>/uploads/user.png" alt="User">
 					        				</div>
 					        				<div>
 					        					<p class="text-center">
