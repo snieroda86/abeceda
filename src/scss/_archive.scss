@@ -1,1 +1,49 @@
-  
+.post-thumbnail-single{
+	height: 300px;
+	position: relative;
+	border-radius: $radius;
+	overflow: hidden;
+	img{
+		object-fit: cover;
+		object-position: center top;
+		height: 100%;
+		width:100%;
+	}
+
+	&::after{
+		content:'';
+		position: absolute;
+		top:0;
+		left:0;
+		bottom:0;
+		right:0;
+		background: rgba(0,0,0,0.3);
+		opacity: 0;
+		transition: 0.5s;
+	}
+
+	&:hover::after{
+		opacity: 1;
+	}
+}  
+
+.single-post-content{
+	padding-top: 25px;
+	a{
+		text-decoration: none;
+	}
+	h2{
+		font-size: 21px;
+		margin-bottom: 15px;
+	}
+
+	.post-excerpt-sn{
+		margin-bottom: 15px;
+	}
+	.more-link-sn-wrapper{
+		p{
+			color: $color-primary;
+			font-weight: 600;
+		}
+	}
+}

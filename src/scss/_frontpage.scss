@@ -66,3 +66,18 @@
 		right:-60px;
 	}
 }
+
+// About
+.about-img-shadow{
+	background: $gradient-light;
+	height:80%;
+	width:80%; 
+	position: absolute;
+	right:-15px;
+	bottom:-15px;
+	border-radius: 0 0 90px 0;
+}
+
+.about-img{
+	border-radius: 75px 0 75px 0; 
+}

@@ -32,16 +32,6 @@
            
             <div class="single-post-content">
 
-                <div class="post-meta-row d-flex align-items-center">
-                   
-                   <div class="post-meta-i">
-                       <img src="<?php echo PATH_SN ?>/uploads/calendar2.svg" alt="Kalendarz">
-                   </div>
-                   <div class="post-meta-text">
-                       <h6><?php echo get_the_date(); ?></h6>
-                   </div>
-                </div>
-
                 <a href="<?php the_permalink(); ?>">
                    <h2 class="single-post-title">
                        <?php the_title(); ?>
@@ -53,9 +43,12 @@
                 </div>
 
                 <div class="more-link-sn-wrapper">
-                    <a href="<?php echo the_permalink(); ?>">
-                        <p class="more-link-sn">
-                            <?php _e('Czytaj więcej' , 'web14devsn'); ?>
+                    <a class="d-flex align-items-center" href="<?php echo the_permalink(); ?>">
+                        <p class="more-link-sn pe-3">
+                            <?php _e('Czytaj dalej' , 'web14devsn'); ?>
+                        </p>
+                        <p>
+                            <img src="<?php echo PATH_SN ?>/uploads/arrow-more-link.png" alt="Arrow">
                         </p>
                     </a>
                 </div>
