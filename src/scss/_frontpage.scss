@@ -49,3 +49,20 @@
 		right:-60px;
 	}
 }
+
+.recommended-products-sn-wrapper{
+	position: relative;
+
+	.ftr-prev{
+		position: absolute;
+		top:50%;
+		transform: transtaleY(-50%);
+		left:-60px;
+	}
+	.ftr-next{
+		position: absolute;
+		top:50%;
+		transform: transtaleY(-50%);
+		right:-60px;
+	}
+}
