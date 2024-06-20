@@ -68,11 +68,15 @@ get_header(); ?>
             <?php endif; ?>
 
             <!-- Category banner end -->
+
+            <!-- main categories -->
+            <?php if (is_shop() || is_product_category()) : ?>
+                <?php get_template_part('template-parts/woocommerce/main-categories'); ?>
+            <?php endif; ?>
+
             <?php
 
-            if (is_shop() || is_product_category()) :
-                
-                ?>
+            if (is_shop() || is_product_category()) : ?>
                 <div class="shop-sidebar-sn">
 
                     <!-- Categories -->
@@ -80,8 +84,8 @@ get_header(); ?>
                         <h2>Kategorie</h2>
                         <?php get_template_part('template-parts/woocommerce/categories'); ?>
                     <?php elseif(is_product_category()): ?>
-                        <h2>Podkategorie</h2>
-
+                        <h2>Kategorie</h2>
+                        <?php get_template_part('template-parts/woocommerce/subcategories'); ?>
                     <?php endif; ?>
                     <?php if ( is_active_sidebar( 'sidebar-shop' ) ) { ?>
                         <?php dynamic_sidebar('sidebar-shop'); ?>

@@ -157,3 +157,39 @@ body.archive.woocommerce{
 		}
 	}
 }
+.accordion-item-arow{
+	transition: 0.3s;
+}
+.item-expanded{
+	transform:rotate(180deg);
+}
+
+.main-categories-buttons{
+	padding-bottom: 70px;
+	ul{
+		list-style-type: none; 
+		padding:0;
+		margin:0;
+		display: flex;
+		flex-wrap: wrap;
+
+		li{
+			margin-right: 20px;
+
+			a{
+				text-decoration: none;
+				padding:12px 20px;
+				border-radius: 30px;
+				background: #F7F7F7;
+				color:$text-color;
+				font-size: 14px;
+				font-weight: 600;
+			}
+		}
+
+		li.current a{
+			background: $gradient-light;
+			color: #fff;  
+		}
+	}
+}
