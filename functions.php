@@ -109,18 +109,7 @@ if ( ! function_exists( 'web14devsn_setup' ) ) :
 		);
 
 		// Woocommerce theme support
-		add_theme_support( 'woocommerce', array(
-			'thumbnail_image_width' => 150,
-			'single_image_width'    => 400,
-			        'product_grid'          => array(
-			            'default_rows'    => 3,
-			            'min_rows'        => 2,
-			            'max_rows'        => 8,
-			            'default_columns' => 3,
-			            'min_columns'     => 1,
-			            'max_columns'     => 3,
-			        ),
-		) );
+		add_theme_support( 'woocommerce');
 	}
 endif;
 add_action( 'after_setup_theme', 'web14devsn_setup' );
@@ -145,8 +134,21 @@ add_action( 'after_setup_theme', 'web14devsn_content_width', 0 );
 function web14devsn_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'web14devsn' ),
+			'name'          => esc_html__( 'Blog sidebar', 'web14devsn' ),
 			'id'            => 'sidebar-1',
+			'description'   => esc_html__( 'Add widgets here.', 'web14devsn' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+
+	// Shop sidebar
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Shop sidebar', 'web14devsn' ),
+			'id'            => 'sidebar-shop',
 			'description'   => esc_html__( 'Add widgets here.', 'web14devsn' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',

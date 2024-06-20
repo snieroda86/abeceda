@@ -47,3 +47,113 @@
 		}
 	}
 }
+
+body.archive.woocommerce{
+	h1.page-title{
+		display: none !important;
+	}
+}
+.woocommerce:where(body:not(.woocommerce-uses-block-theme)) ul.products li.product .price{
+	color: $color-primary ;
+	font-size: 21px;
+	font-weight: 700;
+
+	bdi{
+		color: $color-primary ;
+
+		span{
+			color: $color-primary ;
+
+		}
+
+	}
+
+	del{
+		font-size: 16px;
+		color: #ddd;
+
+		bdi,span{
+			color: #ddd;
+		}
+	}
+}
+
+.berocket_ajax_group_filter_title{
+	padding-bottom: 25px;
+}
+
+.bapf_head{
+	
+	padding-bottom: 15px;
+
+	h3{
+		font-size: 16px !important;
+	}
+}
+
+.irs--big .irs-handle{
+	width:18px;
+	height: 18px;
+	background: $color-primary !important;
+	box-shadow: none;
+	border:0;
+	cursor: pointer;
+	border-radius: 18px;
+	top:27px;
+}
+
+.irs--big .irs-bar{
+	height: 8px;
+	box-shadow: none;
+	border:0;
+	background: #8ED2DE;
+}
+.irs--big .irs-line{
+	height: 8px;
+}
+.irs--big .irs-from, .irs--big .irs-single, .irs--big .irs-to{
+	background: $text-color;
+}
+.shop-sidebar-sn{
+	h2,h3{
+		font-size: 20px;
+
+	}
+	h2{
+		padding-bottom: 25px;
+	}
+
+	button{
+		background: transparent;
+		padding:0;
+	}
+
+	.card{
+		border:0;
+		background: transparent;
+		.card-header{
+			border:0;
+			background: transparent;
+			padding-left: 0;
+			h4{
+				display: flex;
+				justify-content: space-between;
+			}
+		}	
+
+		.card-body{
+			padding-left: 0;
+		}
+	}
+	
+}
+#accordion-p-categories{
+	h4{
+		
+		a{
+			font-size: 16px;
+			font-weight: 600;
+			text-decoration: none;
+		}
+	}
+}
