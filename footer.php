@@ -16,7 +16,11 @@
 		
 		<div class="container-lg footer-container-sn">
 
-			
+			<div class="row">
+				<div class="col-12 pb-4">
+					<img class="img-fluid"  src="<?php echo PATH_SN ?>/uploads/logo-color.png" alt="Logo">
+				</div>
+			</div>
 			<!-- Widget area -->
 			<div class="row widget-area-footer-sn">
 				<!-- Widget -->
@@ -52,16 +56,31 @@
 					</div>
 				</div>
 				<!-- Widget end -->
+				<!-- Widget -->
+				<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+					<div class="widget-item-footer mb-3">
+						<?php if ( is_active_sidebar( 'f-widget-4' ) ) { ?>
+						    <aside>
+						        <?php dynamic_sidebar('f-widget-4'); ?>
+						    </aside>
+						<?php } ?>
+					</div>
+				</div>
+				<!-- Widget end -->
 			</div>
 			<!-- Copyrights -->
 			<div class="row copyr-row-sn pt-5">
 
-				<div class="col-12">
+				<div class="col-sm-6 col-12">
 					
 					<p class="py-3 footer-text">
-						<span><?php echo date('Y') ?></span> © <span> Rosfix</span> | 
+						 © <span> Copyrights</span> <span><?php echo date('Y') ?></span> |  Wszelkie prawa zastrzeżone. 
 					</p>
 					
+				</div>
+
+				<div class="col-sm-6 col-12">
+					<p class="text-sm-end text-center">Powered by</p>
 				</div>
 				
 			</div>

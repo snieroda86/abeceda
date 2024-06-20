@@ -1,1 +1,31 @@
-  
+footer.site-footer{
+	padding-top: 40px;
+	background: #fff;
+
+	a:hover{
+		color: $link-hover;
+	}
+}  
+
+section.widget{
+	margin-bottom: 25px;
+
+	ul,ol{
+		padding:0;
+		margin:0;
+		list-style-type: none;
+
+		li{
+			padding-bottom: 10px;
+
+			a{
+				text-decoration: none;
+			}
+		}
+	}
+}
+h2.widget-title{
+	font-size: 17px;
+	padding-bottom: 25px;
+}
+
