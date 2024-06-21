@@ -23,8 +23,8 @@ defined( 'ABSPATH' ) || exit; ?>
 	</div>
 </div>
 
-<div class="row g-lg-5 g-4">
-	<div class="col-lg-8 col-md-12">
+<div class="row g-5">
+	<div class="col-md-8">
 		<form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 			<?php do_action( 'woocommerce_before_cart_table' ); ?>
 
@@ -32,7 +32,7 @@ defined( 'ABSPATH' ) || exit; ?>
 				<table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
 					<thead>
 						<tr>
-							
+							<th class="product-remove"><span class="screen-reader-text"><?php esc_html_e( 'Remove item', 'woocommerce' ); ?></span></th>
 							<th class="product-thumbnail"><span class="screen-reader-text"><?php esc_html_e( 'Thumbnail image', 'woocommerce' ); ?></span></th>
 							<th class="product-name"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
 							<th class="product-price"><?php esc_html_e( 'Price', 'woocommerce' ); ?></th>
@@ -62,7 +62,22 @@ defined( 'ABSPATH' ) || exit; ?>
 								?>
 								<tr class="woocommerce-cart-form__cart-item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
 
-									
+									<td class="product-remove">
+										<?php
+											echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+												'woocommerce_cart_item_remove_link',
+												sprintf(
+													'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">&times;</a>',
+													esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
+													/* translators: %s is the product name */
+													esc_attr( sprintf( __( 'Remove %s from cart', 'woocommerce' ), wp_strip_all_tags( $product_name ) ) ),
+													esc_attr( $product_id ),
+													esc_attr( $_product->get_sku() )
+												),
+												$cart_item_key
+											);
+										?>
+									</td>
 
 									<td class="product-thumbnail">
 									<?php
@@ -137,28 +152,6 @@ defined( 'ABSPATH' ) || exit; ?>
 										<?php
 											echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 										?>
-
-										<!-- Remove product -->
-										<div class="product-remove">
-										<?php
-											echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-												'woocommerce_cart_item_remove_link',
-												sprintf(
-													'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">
-														<span class="me-1"><img src="'.PATH_SN.'/uploads/trash.png" alt="Usuń"></span>
-														<span>Usuń</span>
-													</a>',
-													esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
-													/* translators: %s is the product name */
-													esc_attr( sprintf( __( 'Remove %s from cart', 'woocommerce' ), wp_strip_all_tags( $product_name ) ) ),
-													esc_attr( $product_id ),
-													esc_attr( $_product->get_sku() )
-												),
-												$cart_item_key
-											);
-										?>
-										</div>
-										<!-- Remove end -->
 									</td>
 								</tr>
 								<?php
@@ -173,7 +166,7 @@ defined( 'ABSPATH' ) || exit; ?>
 
 								<?php if ( wc_coupons_enabled() ) { ?>
 									<div class="coupon">
-										<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Zastosuj', 'woocommerce' ); ?></button>
+										<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></button>
 										<?php do_action( 'woocommerce_cart_coupon' ); ?>
 									</div>
 								<?php } ?>
@@ -194,7 +187,7 @@ defined( 'ABSPATH' ) || exit; ?>
 
 		</form>		
 	</div>
-	<div class="col-lg-4 col-md-12">
+	<div class="col-md-4">
 		<?php do_action( 'woocommerce_before_cart_collaterals' ); ?>
 
 		<div class="cart-collaterals">

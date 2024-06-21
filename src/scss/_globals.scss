@@ -89,6 +89,7 @@ button , a.button , .btn{
    transition: background 0.3s ease;
    width:100%;
    text-align: center;
+    transition: background 0.5s linear;
 
    &:hover{
     color: #fff;

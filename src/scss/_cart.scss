@@ -1,0 +1,229 @@
+body.woocommerce-cart {
+	.page-title{
+		display: none;
+	}
+
+	main#primary{
+		background: $light-grey;
+	}
+}
+
+.woocommerce .cart-collaterals .cart_totals, .woocommerce-page .cart-collaterals .cart_totals{
+	width:100%;
+	float:none;
+	box-shadow: $box-shadow;
+	padding:30px 40px;
+	border-radius: $radius;
+
+	@include breakpoint('small'){
+		padding:30px 15px;
+	}
+
+}
+
+.cart-table-wrapper{
+	box-shadow: $box-shadow;
+	padding:40px;
+	border-radius: $radius;
+
+	@include breakpoint('small'){
+		padding:30px 15px;
+	}
+}
+
+/**
+ * WP Tutorials : Customise WooCommerce Shipping Rates Layout, CWSRL
+ *
+ * https://wp-tutorials.tech/refine-wordpress/woocommerce-shipping-methods-as-a-dropdown-list/
+ */
+
+.woocommerce ul#shipping_method {
+   display: flex;
+   flex-direction: column;
+   gap: 0.3em;
+}
+
+.woocommerce ul#shipping_method li {
+   position: relative;
+   text-indent: unset !important; /* Fix an Astra issue */
+}
+
+/* Hide the default input[type="radio"] controls */
+.woocommerce ul#shipping_method li input {
+   display: none;
+}
+
+.woocommerce ul#shipping_method li input+label {
+   padding: 0.5em;
+   background-color: #fefefe;
+   display: block;
+   cursor: pointer;
+   border: 1px solid $color-primary;
+   text-align: center;
+   border-radius: $radius;
+   font-size: 14px;
+   font-weight: 700;
+}
+
+.woocommerce ul#shipping_method li input:checked+label {
+   padding: 0.5em;
+   background-color: $color-primary;
+   color: white;
+   border-color: $color-primary;
+}
+
+#add_payment_method .cart-collaterals .cart_totals table, .woocommerce-cart .cart-collaterals .cart_totals table, .woocommerce-checkout .cart-collaterals .cart_totals table{
+	border:0;
+
+	td,th{
+		border:0;
+		padding-left: 0;
+	}
+}
+
+.order-total-sn{
+	padding-top: 25px;
+	.order-total-price-sn{
+		font-size: 26px;
+		font-weight: 700;
+		color: $text-color;
+	}	
+}
+
+.cart-table-wrapper{
+	table{
+		border:0 !important;
+		td,th{
+			vertical-align: top !important;
+			border:0 !important;
+			padding-left:0 !important;
+			
+
+
+			a{
+				text-decoration: none;
+			}
+		}
+		td.product-name{
+			font-weight: 600;
+		}
+
+		td.product-subtotal{
+			font-weight: 700;
+		}
+
+		.product-quantity{
+
+		}
+
+		tbody{
+			td,th{
+				padding-left:0 !important;
+				padding-top: 20px !important;
+				padding-bottom:20px !important;
+			}
+		}
+	}
+}
+
+.woocommerce .cart-collaterals .cart_totals, .woocommerce-page .cart-collaterals .cart_totals{
+	h2{
+		font-size: 24px;
+		padding-bottom: 15px;
+	}
+}
+#add_payment_method .wc-proceed-to-checkout a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout a.checkout-button, .woocommerce-checkout .wc-proceed-to-checkout a.checkout-button{
+	font-size: 16px;
+}
+
+.woocommerce a.remove{
+	display: inline-flex;
+	width:auto;
+	height: auto;
+	padding:10px 20px;
+	border:2px solid $color-primary;
+	border-radius: 30px;
+
+	img{
+		height: 16px !important;
+		width:auto !important;
+		margin-top: -3px;
+	}
+
+	span{
+		font-size: 15px;
+		font-weight: 600;
+	}
+
+	&:hover{
+		background: $color-primary;
+
+		span{
+			color:#fff;
+		}
+		img{
+			filter: invert(100%);
+		}
+	}
+}
+
+.product-remove{
+	padding-top: 35px;
+}
+body .qib-button-wrapper{
+	padding:0;
+	margin:0 !important;
+	background: #fff;
+	border:2px solid $color-primary;
+	border-radius: 30px;
+	overflow: hidden;
+
+	input{
+		outline: none !important;
+		font-size: 16px !important;
+		font-family: $main-font;
+	}
+}
+.qib-button-wrapper .quantity input.input-text.qty.text{
+	padding:6px 6px 8px !important;
+
+}
+.qib-button-wrapper button.qib-button{
+	padding:6px 6px 8px !important;
+	width:30px !important;	
+	height: 30px !important;
+}
+#add_payment_method table.cart img, .woocommerce-cart table.cart img, .woocommerce-checkout table.cart img{
+	max-width:100px;
+	width:100%;
+}
+.qib-button-wrapper button.qib-button, .qib-button-wrapper div.quantity.wqpmb_quantity{
+	height: 34px !important;
+}
+.woocommerce #content table.cart td.actions .coupon, .woocommerce table.cart td.actions .coupon, .woocommerce-page #content table.cart td.actions .coupon, .woocommerce-page table.cart td.actions .coupon{
+	width:100%;
+	display: flex;
+	// margin-top: 30px;
+	// padding-top: 30px;
+	// border-top:2px solid $color-primary;
+	padding:15px;
+	background: $color-primary;
+	border-radius: $radius;
+	margin-top: 25px;
+	
+
+	input[type="text"]{
+		max-width: 300px;
+		width:100%;
+		border-radius: $radius;
+	}
+	button[type="submit"]{
+		width:140px !important;
+		margin-left: 10px;
+	}
+}
+
+button[name="update_cart"]{
+	background: $gradient-light !important;
+	display: none !important;
+}

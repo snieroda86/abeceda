@@ -23,5 +23,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="checkout-button button alt wc-forward<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>">
-	<?php esc_html_e( 'Proceed to checkout', 'woocommerce' ); ?>
+	<span class="text-white me-3"><?php esc_html_e( 'Złóż zamówienie', 'web14devsn' ); ?></span><span><img src="<?php echo PATH_SN ?>/uploads/arrow-white.png" alt="Strzałka"></span>
 </a>

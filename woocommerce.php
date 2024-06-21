@@ -70,7 +70,7 @@ get_header(); ?>
             <!-- Category banner end -->
 
             <!-- main categories -->
-            <?php if (is_shop() || is_product_category()) : ?>
+            <?php if (is_product_category()) : ?>
                 <?php get_template_part('template-parts/woocommerce/main-categories'); ?>
             <?php endif; ?>
 
