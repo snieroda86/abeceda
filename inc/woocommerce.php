@@ -79,3 +79,11 @@ function continue_shopping_btn_sn(){
    } 
 }
 add_action('woocommerce_proceed_to_checkout' , 'continue_shopping_btn_sn',20);
+/*
+** Cart nwsletter
+*/
+
+function display_newsletter_on_cart_page(){
+    get_template_part('template-parts/global/newsletter');
+}
+add_action('woocommerce_cart_newsletter' , 'display_newsletter_on_cart_page');

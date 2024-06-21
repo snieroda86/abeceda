@@ -6,6 +6,9 @@ body.woocommerce-cart {
 	main#primary{
 		background: $light-grey;
 	}
+	.woocommerce table.shop_table{
+		margin:0;
+	}
 }
 
 .woocommerce .cart-collaterals .cart_totals, .woocommerce-page .cart-collaterals .cart_totals{
@@ -226,4 +229,48 @@ body .qib-button-wrapper{
 button[name="update_cart"]{
 	background: $gradient-light !important;
 	display: none !important;
+}
+
+.shipping-info{
+	padding:25px 0; 
+}
+.shipping-info-table{
+	th{
+		font-weight: 400; 
+		padding-bottom: 2px !important;
+
+	}
+	td{
+		padding-left: 20px !important;
+		padding-bottom: 2px !important; 
+	}
+
+	.shipping-info-i{
+		 img{
+		 	margin-left: 2px;
+		 	margin-top: -4px; 
+		 }
+	}
+}
+.custom-tooltip {
+  --bs-tooltip-bg: #167C8E;
+  --bs-tooltip-color: #fff;
+  --bs-tooltip-opacity: 1; 
+}
+
+body.woocommerce-cart {
+	.newsletter-wrapper{
+		padding:40px;
+
+		@include breakpoint('small'){
+			padding:40px 15px; 
+		}
+
+		h3{
+			padding-bottom: 10px;
+		}
+		p{
+			padding-bottom: 15px;
+		}
+	}
 }

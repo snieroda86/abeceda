@@ -136,3 +136,30 @@ ul.slick-dots{
     }
   }
 }
+
+/* 
+** NEWSLETTER
+*/
+.newsletter-form-wrapper{
+  
+  form{
+    display: flex;
+    overflow: hidden;
+    border:2px solid #ddd;
+    border-radius: 30px;
+    input[type="email"]{
+      border:0;
+      outline: none;
+      padding-left: 25px;
+
+      &:focus{
+        box-shadow: none;
+      }
+    }
+
+    input[type="submit"]{
+      border-radius: 0;
+    }
+
+  }
+}

@@ -1,0 +1,1 @@
+jQuery(document).ready((function(o){[...document.querySelectorAll('[data-bs-toggle="tooltip"]')].map((o=>new bootstrap.Tooltip(o)))}));

@@ -108,6 +108,52 @@ defined( 'ABSPATH' ) || exit;
 		
 	</div>
 
+	<!-- Shipping info -->
+	<?php 
+	$packages = WC()->shipping()->get_packages();
+    $cheapest_cost = null;
+
+    foreach ($packages as $package) {
+        $available_methods = $package['rates'];
+
+        foreach ($available_methods as $method) {
+            
+            if ($method->method_id !== 'free_shipping' && ($cheapest_cost === null || $method->cost < $cheapest_cost)) {
+                $cheapest_cost = $method->cost;
+            }
+        }
+    }
+	?>
+	<div class="shipping-info">
+       <table class="shipping-info-table">
+		    <tr>
+		        <th><?php _e('Czas wysyłki:', 'web14devsn') ?></th>
+		        <td><b><?php _e('24 godziny', 'web14devsn') ?></b></td>
+		    </tr>
+		    <tr>
+		        <th><?php _e('Koszt wysyłki:', 'web14devsn') ?></th>	
+	        	<?php if(!is_null($cheapest_cost)): ?>
+	        	<td>
+	        		<b>
+	        			<?php _e('od', 'web14devsn'); ?>
+	        			<?php echo wc_price($cheapest_cost); ?>
+	        			<span class="shipping-info-i" 
+	        			data-bs-toggle="tooltip" data-bs-placement="top"
+        				data-bs-custom-class="custom-tooltip"
+        				data-bs-title="Darmowa wysyłka od zamówienia powyżej 100zł"
+	        			>
+	        				<img src="<?php  echo PATH_SN ?>/uploads/info-empty.png" alt="Info">
+	        			</span>
+
+		        	</b>
+
+		        </td>
+	        	<?php endif; ?> 
+		    </tr>
+		</table>
+
+    </div>
+
 	<div class="wc-proceed-to-checkout">
 		<?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
 		
@@ -116,3 +162,5 @@ defined( 'ABSPATH' ) || exit;
 	<?php do_action( 'woocommerce_after_cart_totals' ); ?>
 
 </div>
+
+<?php do_action( 'woocommerce_cart_newsletter' ); ?>
