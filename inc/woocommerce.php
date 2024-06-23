@@ -87,3 +87,213 @@ function display_newsletter_on_cart_page(){
     get_template_part('template-parts/global/newsletter');
 }
 add_action('woocommerce_cart_newsletter' , 'display_newsletter_on_cart_page');
+
+/*
+** Single product - display categories
+*/
+function single_product_display_category(){
+    global $product;
+    echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' );
+}
+add_action('woocommerce_single_product_summary' , 'single_product_display_category' , 7);
+
+/*
+** Remove price from single product
+*/
+function remove_price_from_single_product(){
+    global $product;
+    if( $product && $product->is_type('simple')){
+        remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
+    }
+}
+add_action('woocommerce_before_single_product_summary', 'remove_price_from_single_product', 9);
+/*
+** Additional information - product page
+*/
+function get_cheapest_shipping_cost() {
+    WC()->shipping->calculate_shipping(WC()->cart->get_shipping_packages());
+    $packages = WC()->shipping()->get_packages();
+    $cheapest_cost = null;
+
+    foreach ($packages as $package) {
+        $available_methods = $package['rates'];
+
+        foreach ($available_methods as $method) {
+            if ($method->method_id !== 'free_shipping' && ($cheapest_cost === null || $method->cost < $cheapest_cost)) {
+                $cheapest_cost = $method->cost;
+            }
+        }
+    }
+
+    return $cheapest_cost;
+}
+
+
+function product_additional_info_table(){
+    if (!is_product()) {
+        return;
+    }
+
+    global $product;
+    $availability = $product->is_in_stock() ? 'Dostępny' : 'Niedostępny';
+    $cheapest_cost = get_cheapest_shipping_cost();
+    ?>
+    <table class="product-additional-info-table">
+        <tr>
+            <th>
+                <span class="pe-1"><img src="<?php echo PATH_SN ?>/uploads/dostepnosc.png" alt="Dostępność"></span>
+                <span>
+                    <?php _e('Dostępność:', 'web14devsn'); ?>
+                </span>
+            </th>
+            <td>
+                <p class="product-status <?php if (strtolower($availability) == 'niedostępny') { echo ' product-out-of-stock'; } ?>"><?php echo $availability; ?></p>          
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <span class="pe-1"><img src="<?php echo PATH_SN ?>/uploads/czas-wysylki.png" alt="Czas wysyłki"></span>
+                <span>
+                    <?php _e('Czas wysyłki:', 'web14devsn'); ?>
+                </span>
+            </th>
+            <td>
+                <p><?php _e('24 godziny', 'web14devsn'); ?></p>          
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <span class="pe-1"><img src="<?php echo PATH_SN ?>/uploads/koszt-wysylki.png" alt="Koszt wysyłki"></span>
+                <span>
+                    <?php _e('Koszt wysyłki:', 'web14devsn'); ?>
+                </span>
+            </th>
+            <td>
+                <p><?php if (!is_null($cheapest_cost)) {
+                    echo wc_price($cheapest_cost);
+                } ?>
+                    <span class="shipping-info-i" 
+                    data-bs-toggle="tooltip" data-bs-placement="top"
+                    data-bs-custom-class="custom-tooltip"
+                    data-bs-title="Darmowa wysyłka od zamówienia powyżej 100zł"
+                    >
+                        <img src="<?php  echo PATH_SN ?>/uploads/info-empty.png" alt="Info">
+                    </span>
+                </p>          
+            </td>
+        </tr>
+
+        <!-- EAN -->
+        <?php if( $ean = get_field('kod_ean' , $product->get_id() )): ?>
+        <tr>
+            <th>
+                <span class="pe-1"><img src="<?php echo PATH_SN ?>/uploads/kod-ean.png" alt="Kod ean"></span>
+                <span>
+                    <?php _e('Kod EAN:', 'web14devsn'); ?>
+                </span>
+            </th>
+            <td>
+                <p><?php echo $ean; ?></p>          
+            </td>
+        </tr>
+        <?php endif; ?>
+        <!-- Stan produktu -->
+        <?php if( $stan_produktu = get_field('stan_produktu' , $product->get_id() )): ?>
+        <tr>
+            <th>
+                <span class="pe-1"><img src="<?php echo PATH_SN ?>/uploads/stan-produktu.png" alt="Stan produktu"></span>
+                <span>
+                    <?php _e('Stan produktu:', 'web14devsn'); ?>
+                </span>
+            </th>
+            <td>
+                <p><?php echo $stan_produktu; ?></p>          
+            </td>
+        </tr>
+        <?php endif; ?>
+    </table>
+    <?php
+}
+add_action('woocommerce_single_product_summary', 'product_additional_info_table', 23);
+/*
+** Display product price
+*/
+
+function display_single_product_price(){
+    global $product;
+    if ( ! empty( $product ) ) {
+        echo '<p class="product-price">' . $product->get_price_html() . '</p>';
+    }
+}
+add_action('woocommerce_single_product_summary' , 'display_single_product_price', 29);
+
+/*
+** Remove "Additional information"  tab
+*/
+add_filter( 'woocommerce_product_tabs', 'sn_remove_additional_info_product_tabs', 9999 );
+  
+function sn_remove_additional_info_product_tabs( $tabs ) {
+    unset( $tabs['additional_information'] ); 
+    return $tabs;
+}
+
+/*
+** Custom tabs - product page
+*/
+add_filter( 'woocommerce_product_tabs', 'sn_add_custom_product_tabs', 9999 );
+
+function sn_add_custom_product_tabs( $tabs ) {
+    global $product;
+
+    // Check if the product object is available
+    if ( ! is_a( $product, 'WC_Product' ) ) {
+        return $tabs;
+    }
+
+    $product_id = $product->get_id();
+    $dodatkowe_zakladki_produktu = get_field( 'dodatkowe_zakladki_produktu', $product_id );
+
+    // Linki
+    if ( ! empty( $dodatkowe_zakladki_produktu['linki_add_tab'] ) ) {
+        // Linki
+        $tabs['linki'] = array(
+            'title'    => __( 'Linki', 'web14devsn' ),
+            'priority' => 65, // TAB SORTING (DESC 10, ADD INFO 20, REVIEWS 30)
+            'callback' => 'sn_product_tab_linki',
+        );
+    }
+
+    // Pliki do pobrania
+     if ( ! empty( $dodatkowe_zakladki_produktu['pliki_do_pobrania_add_tab'] ) ) {
+        $tabs['pliki_do_pobrania'] = array(
+            'title'    => __( 'Do pobrania', 'web14devsn' ),
+            'priority' => 20, // TAB SORTING (DESC 10, ADD INFO 20, REVIEWS 30)
+            'callback' => 'sn_product_tab_pliki_do_pobrania',
+        );
+    }
+
+    return $tabs;
+}
+
+// Linki callback
+function sn_product_tab_linki() {
+    global $product;
+    $product_id = $product->get_id();
+    $dodatkowe_zakladki_produktu = get_field( 'dodatkowe_zakladki_produktu', $product_id );
+    $linki = $dodatkowe_zakladki_produktu['linki_add_tab'];
+    if($linki){
+         echo wp_kses_post( $linki );
+    }
+    
+}
+
+// Pliki do pobrania callback
+function sn_product_tab_pliki_do_pobrania() {
+     global $product;
+    $product_id = $product->get_id();
+    $dodatkowe_zakladki_produktu = get_field( 'dodatkowe_zakladki_produktu', $product_id );
+    $do_pobrania = $dodatkowe_zakladki_produktu['pliki_do_pobrania_add_tab'];
+    if($do_pobrania){
+        echo wp_kses_post( $do_pobrania );
+    }
+}

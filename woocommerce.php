@@ -10,7 +10,7 @@
 get_header(); ?>
 
 <main id="primary" class="site-main">
-    <div class="<?php  echo( is_product() ) ? 'full-container-sn' : ' container-lg '; ?> page-container-sn woocommerce-sn">
+    <div class="container-lg page-container-sn woocommerce-sn">
         <div class="row">
             <?php if(is_shop()): ?>
             <div class="shop-cat-banner-wrapper pos-relative">
