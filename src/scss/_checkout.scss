@@ -1,0 +1,27 @@
+body.woocommerce-checkout{
+	.page-title{
+		display: none;
+	}
+	 main#primary{
+	 	background: $light-grey;
+	}
+	
+}
+.woocommerce .col2-set, .woocommerce-page .col2-set{
+	.col-1 , .col-2{
+		width:100%;
+	}
+}
+.woocommerce-billing-fields__field-wrapper{
+	.form-row{
+		margin-bottom: 10px !important;
+	}
+}
+.woocommerce-billing-fields{
+	h3{
+		padding-bottom: 25px;
+	}
+}
+#order_review_heading{
+	padding-bottom: 25px;
+}

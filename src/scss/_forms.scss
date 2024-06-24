@@ -22,3 +22,20 @@ label{
 		margin-left: 10px;
 	}
 }
+
+.select2-container .select2-selection--single{
+    border: 1px solid #B1B1B1;
+	border-radius: $radius;
+	padding:0 15px;
+	outline:none !important;
+	height: 40px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    height: 40px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    height: 40px;
+    line-height: 40px;
+}

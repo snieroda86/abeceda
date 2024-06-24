@@ -297,3 +297,18 @@ function sn_product_tab_pliki_do_pobrania() {
         echo wp_kses_post( $do_pobrania );
     }
 }
+
+/*
+** Checkout form labels as placeholder
+*/
+add_filter( 'woocommerce_checkout_fields', 'sn_labels_inside_checkout_fields', 9999 );
+   
+function sn_labels_inside_checkout_fields( $fields ) {
+   foreach ( $fields as $section => $section_fields ) {
+      foreach ( $section_fields as $section_field => $section_field_settings ) {
+         $fields[$section][$section_field]['placeholder'] = $fields[$section][$section_field]['label'];
+         $fields[$section][$section_field]['label'] = '';
+      }
+   }
+   return $fields;
+}

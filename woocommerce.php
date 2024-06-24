@@ -18,7 +18,7 @@ get_header(); ?>
                     <div class="shop-cat-banner-inner">
                         <h1>
                             <?php 
-                                $shop_page_id = woocommerce_get_page_id('shop');
+                                $shop_page_id = wc_get_page_id('shop');
                                 $shop_page_title = get_the_title($shop_page_id);
                                 echo $shop_page_title;
                              ?>
@@ -69,14 +69,23 @@ get_header(); ?>
 
             <!-- Category banner end -->
 
+            <!-- Product tag -->
+            <?php if( is_product_tag() ): ?>
+                <div class="product-tag-header">
+                    <h1>
+                       <span>Tag: </span><?php echo single_term_title(); ?>
+                    </h1>
+                </div>
+            <?php endif; ?>
+
             <!-- main categories -->
-            <?php if (is_product_category()) : ?>
+            <?php if (is_product_category() || is_product_tag() ) : ?>
                 <?php get_template_part('template-parts/woocommerce/main-categories'); ?>
             <?php endif; ?>
 
             <?php
 
-            if (is_shop() || is_product_category()) : ?>
+            if (is_shop() || is_product_category() || is_product_tag()) : ?>
                 <div class="shop-sidebar-sn">
 
                     <!-- Categories -->
@@ -93,7 +102,7 @@ get_header(); ?>
                 </div>
             <?php endif; ?>
 
-            <div class="<?php echo is_shop() || is_product_category() ? 'loop-products-col' : 'col-12'; ?>">
+            <div class="<?php echo is_shop() || is_product_category() || is_product_tag() ? 'loop-products-col' : 'col-12'; ?>">
                 <?php woocommerce_content(); ?>
             </div>
         </div>
