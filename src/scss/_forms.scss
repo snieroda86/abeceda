@@ -1,1 +1,24 @@
- 
+input[type="text"] , input[type="email"] , input[type="tel"],input[type="password"],input[type="text"]{
+	height: 40px;
+	border: 1px solid #B1B1B1;
+	border-radius: $radius;
+	padding:0 15px;
+	outline:none !important;
+} 
+textarea{
+	height: 160px;
+	border: 1px solid #B1B1B1;
+	border-radius: $radius;
+	padding:15px;
+	outline:none !important;
+}
+label{
+	display: block;
+}
+.comment-form-cookies-consent{
+	display: flex;
+
+	label{
+		margin-left: 10px;
+	}
+}

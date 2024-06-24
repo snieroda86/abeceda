@@ -23,12 +23,10 @@ $heading = apply_filters( 'woocommerce_product_description_heading', __( 'Descri
 
 ?>
 
-<?php if ( $heading ) : ?>
-	<h2><?php echo esc_html( $heading ); ?></h2>
-<?php endif; ?>
-
-<?php the_content(); ?>
-
 <div class="additional-info-table">
     <?php do_action( 'woocommerce_product_additional_information', wc_get_product( $post->ID ) ); ?>
 </div>
+
+<?php the_content(); ?>
+
+

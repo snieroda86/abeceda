@@ -4,10 +4,12 @@
 }
 
 .woocommerce div.product{
+	margin-top: 40px;
 	.tinv-wishlist .tinvwl_add_to_wishlist_button.tinvwl-icon-heart-plus.no-txt, .tinv-wishlist .tinvwl_add_to_wishlist_button.tinvwl-icon-heart.no-txt{
 		width:36px;
 		height: 36px;
 		position: relative;
+		margin-top: 0; 
 
 	}
 	.tinv-wishlist .tinvwl_add_to_wishlist_button.tinvwl-icon-heart-plus.no-txt:before, .tinv-wishlist .tinvwl_add_to_wishlist_button.tinvwl-icon-heart.no-txt:before{
@@ -106,5 +108,86 @@ p.product-status{
 	
 }
 .additional-info-table{
-	padding-top:30px;
+	// padding-top:30px;
+}
+.woocommerce-tabs.wc-tabs-wrapper{
+	padding-top:60px;
+	margin-bottom: 100px;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs{
+	padding:0;
+	margin:0;
+	margin-bottom: 40px;
+	// border-bottom: 2px solid #E1E1E1;
+}
+.woocommerce #reviews #comments h2{
+	display: none !important;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li{
+	background-color: #fff;
+	border:0;
+	max-width: 250px;
+	width:100%;
+	text-align: center;
+	margin:0;
+	margin-bottom: -2px;
+	position: relative;
+
+	@include breakpoint('small'){
+		width:100%;
+		max-width: 100%;
+	}
+
+
+	&::before {
+		display: none !important;
+	}
+
+	a{
+		padding:15px 0;
+		color: $text-color;
+	}
+
+
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs::before{
+	// display: none; 
+	border-bottom: 2px solid #E1E1E1;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active::after{
+	content:'';
+	width:100%;
+	height: 2px !important;
+	background: $color-primary !important;
+	display: block !important;
+	position: absolute !important;
+	bottom:0 !important;
+	left:0 !important;
+	right:0 !important;
+	z-index: 2;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active{
+	border-bottom:2px solid $color-primary !important; 
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li::after{
+	display: none !important;
+}
+.woocommerce #review_form #respond .form-submit input{
+	width:180px;
+}
+.woocommerce #review_form #respond textarea{
+	height: 120px;
+}
+.woocommerce #review_form #respond{
+	max-width: 800px;
+}
+.woocommerce table.shop_attributes{
+	td,th{
+		background: #fff !important;
+	}
+}
+.related.products{
+	h2{
+		padding-bottom: 40px;
+	}
 }
