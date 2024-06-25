@@ -301,14 +301,135 @@ function sn_product_tab_pliki_do_pobrania() {
 /*
 ** Checkout form labels as placeholder
 */
-add_filter( 'woocommerce_checkout_fields', 'sn_labels_inside_checkout_fields', 9999 );
+// add_filter( 'woocommerce_checkout_fields', 'sn_labels_inside_checkout_fields', 9999 );
    
-function sn_labels_inside_checkout_fields( $fields ) {
-   foreach ( $fields as $section => $section_fields ) {
-      foreach ( $section_fields as $section_field => $section_field_settings ) {
-         $fields[$section][$section_field]['placeholder'] = $fields[$section][$section_field]['label'];
-         $fields[$section][$section_field]['label'] = '';
-      }
-   }
-   return $fields;
+// function sn_labels_inside_checkout_fields( $fields ) {
+//    foreach ( $fields as $section => $section_fields ) {
+//       foreach ( $section_fields as $section_field => $section_field_settings ) {
+//          $fields[$section][$section_field]['placeholder'] = $fields[$section][$section_field]['label'];
+//          $fields[$section][$section_field]['label'] = '';
+//       }
+//    }
+//    return $fields;
+// }
+
+/*
+** Add NIP filed to checokut form 
+*/
+
+add_filter('woocommerce_checkout_fields', 'custom_override_checkout_fields');
+
+function custom_override_checkout_fields($fields) {
+    $fields['billing']['billing_nip'] = array(
+        'type'        => 'text',
+        'label'       => __('NIP', 'woocommerce'),
+        'placeholder' => _x('Podaj NIP', 'placeholder', 'woocommerce'),
+        'required'    => false,
+        'class'       => array('form-row-wide'),
+        'clear'       => true,
+        'priority'    => 999,  // Wysoki priorytet, aby pole było na końcu
+    );
+
+    return $fields;
 }
+
+add_action('woocommerce_checkout_order_review', 'display_nip_field_in_order_review', 20);
+
+function display_nip_field_in_order_review() {
+    $checkout = WC()->checkout();
+    woocommerce_form_field('billing_nip', array(
+        'type'        => 'text',
+        'class'       => array('form-row-wide'),
+        'label'       => __('NIP', 'woocommerce'),
+        'placeholder' => __('Podaj NIP', 'woocommerce'),
+    ), $checkout->get_value('billing_nip'));
+}
+
+add_action('woocommerce_checkout_update_order_meta', 'save_nip_checkout_field');
+
+function save_nip_checkout_field($order_id) {
+    if (!empty($_POST['billing_nip'])) {
+        update_post_meta($order_id, 'billing_nip', sanitize_text_field($_POST['billing_nip']));
+    }
+}
+
+add_action('woocommerce_admin_order_data_after_billing_address', 'display_nip_in_admin_order_meta', 10, 1);
+
+function display_nip_in_admin_order_meta($order) {
+    echo '<p><strong>' . __('NIP') . ':</strong> ' . get_post_meta($order->get_id(), 'billing_nip', true) . '</p>';
+}
+
+add_filter('woocommerce_email_order_meta_fields', 'add_nip_to_order_emails', 10, 3);
+
+function add_nip_to_order_emails($fields, $sent_to_admin, $order) {
+    $fields['billing_nip'] = array(
+        'label' => __('NIP'),
+        'value' => get_post_meta($order->get_id(), 'billing_nip', true),
+    );
+    return $fields;
+}
+
+/*
+** Add stars to required fields - chcekout form
+*/
+
+add_filter('woocommerce_checkout_fields', 'customize_checkout_fields', 9999);
+
+function customize_checkout_fields($fields) {
+    foreach ($fields as $section => $section_fields) {
+        foreach ($section_fields as $field => $settings) {
+            // Dodanie gwiazdki do placeholderów pól obowiązkowych
+            if (isset($settings['label']) && isset($settings['required']) && $settings['required']) {
+                $fields[$section][$field]['placeholder'] = $settings['label'] . ' *';
+            } elseif (isset($settings['label'])) {
+                $fields[$section][$field]['placeholder'] = $settings['label'];
+            }
+
+            // Usunięcie tekstu z etykiet, jeśli nie są potrzebne
+            $fields[$section][$field]['label'] = '';
+        }
+    }
+
+    return $fields;
+}
+
+
+/*
+** Placeholder for billing address field
+*/
+
+function sn_new_address_one_placeholder( $fields ) {
+    $fields['address_1']['placeholder'] = 'Nazwa ulicy,numer budynku / numer lokalu *';
+    // $fields['address_2']['placeholder'] = 'Ciąg dalszy adresu';
+
+    return $fields;
+}
+add_filter( 'woocommerce_default_address_fields', 'sn_new_address_one_placeholder' );
+
+/*
+** Change fields order - checkout form
+*/
+add_filter('woocommerce_checkout_fields', 'customize_checkout_field_order');
+
+function customize_checkout_field_order($fields) {
+    // Przykładowe ustawienia priorytetów dla pól
+    $fields['billing']['billing_first_name']['priority'] = 10;
+    $fields['billing']['billing_last_name']['priority'] = 20;
+    $fields['billing']['billing_email']['priority'] = 30;
+    $fields['billing']['billing_phone']['priority'] = 40;
+    $fields['billing']['billing_city']['priority'] = 50;
+    $fields['billing']['billing_postcode']['priority'] = 60;
+    $fields['billing']['billing_address_1']['priority'] = 70;
+    // $fields['billing']['billing_address_2']['priority'] = 50;
+    $fields['billing']['billing_country']['priority'] = 80;
+    $fields['billing']['billing_state']['priority'] = 90;
+    $fields['billing']['billing_company']['priority'] = 100;
+    $fields['billing']['billing_nip']['priority'] = 110; 
+
+    return $fields;
+}
+
+
+
+
+

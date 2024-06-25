@@ -25,3 +25,12 @@ body.woocommerce-checkout{
 #order_review_heading{
 	padding-bottom: 25px;
 }
+#ship-to-different-address{
+	margin-top: 25px;
+}
+
+.woocommerce-checkout{
+	.woocommerce-additional-fields{
+		display: none; 
+	}	
+}
