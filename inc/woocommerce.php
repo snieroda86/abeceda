@@ -317,9 +317,9 @@ function sn_product_tab_pliki_do_pobrania() {
 ** Add NIP filed to checokut form 
 */
 
-add_filter('woocommerce_checkout_fields', 'custom_override_checkout_fields');
+add_filter('woocommerce_checkout_fields', 'display_nip_field_in_checkout_form');
 
-function custom_override_checkout_fields($fields) {
+function display_nip_field_in_checkout_form($fields) {
     $fields['billing']['billing_nip'] = array(
         'type'        => 'text',
         'label'       => __('NIP', 'woocommerce'),
@@ -333,7 +333,7 @@ function custom_override_checkout_fields($fields) {
     return $fields;
 }
 
-add_action('woocommerce_checkout_order_review', 'display_nip_field_in_order_review', 20);
+// add_action('woocommerce_checkout_order_review', 'display_nip_field_in_order_review', 20);
 
 function display_nip_field_in_order_review() {
     $checkout = WC()->checkout();
@@ -430,6 +430,40 @@ function customize_checkout_field_order($fields) {
 }
 
 
+/*
+** Required fields info - checkout form 
+*/
+function sn_required_fields_info_checkout(){ ?>
+    <p class="required-fields-info-checkout">
+        <span class="pe-1"><img src="<?php echo PATH_SN ?>/uploads/info-empty.png" alt="Informacje"></span>
+        <span>Pola onaczone * są obowiązkowe</span>
+    </p>
+<?php }
+add_action('woocommerce_checkout_billing' , 'sn_required_fields_info_checkout' , 9999);
+
+/*
+** Move shipping methods
+*/
+function my_custom_shipping_table_update( $fragments ) {
+    ob_start();
+    ?>
+    <div id="shipping-methods-sn">
+        <?php wc_cart_totals_shipping_html(); ?>
+    </div>
+    <?php
+    $woocommerce_shipping_methods = ob_get_clean();
+    $fragments['#shipping-methods-sn'] = $woocommerce_shipping_methods;
+    return $fragments;
+}
+add_filter( 'woocommerce_update_order_review_fragments', 'my_custom_shipping_table_update');
+
+
+/* Chcekout payment move to another location*/
 
 
 
+
+
+
+
+// add_action('sn_payment_methods_dropdown', 'woocommerce_checkout_payment');

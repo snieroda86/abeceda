@@ -55,6 +55,36 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 				<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 			</div>
 
+			<!-- Shipping method -->
+			<div class="cart-table-wrapper shipping-method-wrapper-sn">
+				<div class="accordion" id="shipping-method-accordion">
+				 
+				  <div class="accordion-item">
+				    <h2 class="accordion-header">
+				      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseShippingMethod" aria-expanded="false" aria-controls="collapseThree">
+				        Metoda dostawy
+				      </button>
+				    </h2>
+				    <div id="collapseShippingMethod" class="accordion-collapse collapse" data-bs-parent="#shipping-method-accordion">
+				      <div class="accordion-body"> 
+				        <?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
+
+							<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
+							<div id="shipping-methods-sn">
+								<?php wc_cart_totals_shipping_html(); ?>	
+							</div>
+							
+							<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
+
+						<?php endif; ?>
+				        
+				      </div>
+				    </div>
+				  </div>
+				  
+				</div>
+			</div>
+
 		</div>
 		<div class="col-lg-5">
 			<div class="cart-table-wrapper">

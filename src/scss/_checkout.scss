@@ -34,3 +34,39 @@ body.woocommerce-checkout{
 		display: none; 
 	}	
 }
+.required-fields-info-checkout{
+	padding-top: 10px;
+	padding-bottom: 20px;
+
+	img{
+		margin-top: -4px;
+	}
+}
+
+.shipping-method-wrapper-sn{
+	margin-top: 40px;
+
+	.accordion-item{
+		border:0 !important;
+		background: transparent;
+	}
+
+	button.accordion-button.collapsed{
+		color: #9E9E9E;
+	}
+
+	button.accordion-button{
+		padding:0;
+		color: $text-color;
+		box-shadow: none !important;
+		background: transparent;
+		border:0 !important;
+		font-size: 21px;
+		font-weight: 700;
+	}
+
+	.accordion-body{
+		padding:0;
+		padding-top: 40px;
+	}
+}
