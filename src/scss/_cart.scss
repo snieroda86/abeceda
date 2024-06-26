@@ -39,41 +39,69 @@ body.woocommerce-cart {
  *
  * https://wp-tutorials.tech/refine-wordpress/woocommerce-shipping-methods-as-a-dropdown-list/
  */
+ 
+body.woocommerce-cart{
+	.woocommerce ul#shipping_method {
+	   display: flex;
+	   flex-direction: column;
+	   gap: 0.3em;  
 
-.woocommerce ul#shipping_method {
-   display: flex;
-   flex-direction: column;
-   gap: 0.3em;
+	   li{
+
+	   	label{
+	   		width:100%;
+	   		img{
+	   			display: none;
+	   		}
+	   		span.amount{
+	   			color: $text-color;
+
+	   			span{
+						color: $text-color;
+
+	   			}
+	   		}
+	   	}
+	   	  div{
+	   	  	width:100%;
+	   	  }
+	   }
+	}
+
+	.woocommerce ul#shipping_method li {
+	   position: relative;
+	   text-indent: unset !important; 
+	}
+
+	.woocommerce ul#shipping_method li input {
+	   display: none;
+	}
+
+	.woocommerce ul#shipping_method li input+label {
+	   padding: 0.5em;
+	   background-color: #fefefe;
+	   display: block;
+	   cursor: pointer;
+	   border: 1px solid $color-primary;
+	   text-align: center;
+	   border-radius: $radius;
+	   font-size: 14px;
+	   font-weight: 700;
+	}
+
+	.woocommerce ul#shipping_method li input:checked+label {
+	   padding: 0.5em;
+	   background-color: $color-primary;
+	   color: white;
+	   border-color: $color-primary;
+	}
 }
 
-.woocommerce ul#shipping_method li {
-   position: relative;
-   text-indent: unset !important; /* Fix an Astra issue */
-}
 
-/* Hide the default input[type="radio"] controls */
-.woocommerce ul#shipping_method li input {
-   display: none;
-}
 
-.woocommerce ul#shipping_method li input+label {
-   padding: 0.5em;
-   background-color: #fefefe;
-   display: block;
-   cursor: pointer;
-   border: 1px solid $color-primary;
-   text-align: center;
-   border-radius: $radius;
-   font-size: 14px;
-   font-weight: 700;
-}
-
-.woocommerce ul#shipping_method li input:checked+label {
-   padding: 0.5em;
-   background-color: $color-primary;
-   color: white;
-   border-color: $color-primary;
-}
+/* 
+** Woocomemrec shipping customie end
+ */
 
 #add_payment_method .cart-collaterals .cart_totals table, .woocommerce-cart .cart-collaterals .cart_totals table, .woocommerce-checkout .cart-collaterals .cart_totals table{
 	border:0;

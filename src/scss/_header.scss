@@ -39,7 +39,7 @@ header#masthead{
 
 .woocommerce ul.products li.product a.tinvwl-button.tinvwl_add_to_wishlist_button.tinvwl-icon-heart.tinvwl-product-in-list:before, .woocommerce-page ul.products li.product a.tinvwl-button.tinvwl-icon-heart.tinvwl_add_to_wishlist_button.tinvwl-product-in-list:before, a.wishlist_products_counter.top_wishlist-heart.wishlist-counter-with-products:before, span.wishlist_products_counter.top_wishlist-heart.wishlist-counter-with-products:before{
 	content: url('../../uploads/heart.png') !important;
-	display: block;
+	display: block !important;
 	margin:auto;
 }
 a.wishlist_products_counter{

@@ -61,7 +61,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 				 
 				  <div class="accordion-item">
 				    <h2 class="accordion-header">
-				      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseShippingMethod" aria-expanded="false" aria-controls="collapseThree">
+				      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseShippingMethod" aria-expanded="false" aria-controls="collapseShippingMethod">
 				        Metoda dostawy
 				      </button>
 				    </h2>
@@ -78,6 +78,26 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 						<?php endif; ?>
 				        
+				      </div>
+				    </div>
+				  </div>
+				  
+				</div>
+			</div>
+
+			<!-- Payment methods -->
+			<div class="cart-table-wrapper payment-method-wrapper-sn">
+				<div class="accordion" id="payment-method-accordion">
+				 
+				  <div class="accordion-item">
+				    <h2 class="accordion-header">
+				      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaymentMethod" aria-expanded="false" aria-controls="collapsePaymentMethod">
+				        Metoda płatności
+				      </button>
+				    </h2>
+				    <div id="collapsePaymentMethod" class="accordion-collapse collapse" data-bs-parent="#payment-method-accordion">
+				      <div class="accordion-body"> 
+				        <?php do_action('sn_payment_methods_dropdown'); ?>
 				      </div>
 				    </div>
 				  </div>

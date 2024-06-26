@@ -3,6 +3,11 @@
 ** Woocommerce customization 
 */
 
+/*
+** SHow shipping methods IDS
+*/
+require get_template_directory().'/inc/TS_ShowShippingMethodIDs.php';
+
 // Update cart count
 add_filter( 'woocommerce_add_to_cart_fragments', 'iconic_cart_count_fragments', 10, 1 );
 
@@ -460,10 +465,117 @@ add_filter( 'woocommerce_update_order_review_fragments', 'my_custom_shipping_tab
 
 /* Chcekout payment move to another location*/
 
+/**
+ * Moving the payments
+ */
+add_action( 'sn_payment_methods_dropdown', 'my_custom_display_payments', 20 );
+
+/**
+ * Displaying the Payment Gateways 
+ */
+function my_custom_display_payments() {
+  if ( WC()->cart->needs_payment() ) {
+    $available_gateways = WC()->payment_gateways()->get_available_payment_gateways();
+    WC()->payment_gateways()->set_current_gateway( $available_gateways );
+  } else {
+    $available_gateways = array();
+  }
+  ?>
+  <div id="checkout_payments">
+    
+    <?php if ( WC()->cart->needs_payment() ) : ?>
+    <ul class="wc_payment_methods payment_methods methods">
+    <?php
+    if ( ! empty( $available_gateways ) ) {
+      foreach ( $available_gateways as $gateway ) {
+        wc_get_template( 'checkout/payment-method.php', array( 'gateway' => $gateway ) );
+      }
+    } else {
+      echo '<li class="woocommerce-notice woocommerce-notice--info woocommerce-info">' . apply_filters( 'woocommerce_no_available_payment_methods_message', WC()->customer->get_billing_country() ? esc_html__( 'Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.', 'woocommerce' ) : esc_html__( 'Please fill in your details above to see available payment methods.', 'woocommerce' ) ) . '</li>'; // @codingStandardsIgnoreLine
+    }
+    ?>
+    </ul>
+  <?php endif; ?>
+  </div>
+<?php
+}
+
+
+/**
+ * Adding the payment fragment to the WC order review AJAX response
+ */
+add_filter( 'woocommerce_update_order_review_fragments', 'my_custom_payment_fragment' );
+
+/**
+ * Adding our payment gateways to the fragment #checkout_payments so that this HTML is replaced with the updated one.
+ */
+function my_custom_payment_fragment( $fragments ) {
+    ob_start();
+
+    my_custom_display_payments();
+
+    $html = ob_get_clean();
+
+    $fragments['#checkout_payments'] = $html;
+
+    return $fragments;
+}
+
+/*
+** Add custom icons to shipping methods
+*/
+add_filter( 'woocommerce_cart_shipping_method_full_label', 'filter_woocommerce_cart_shipping_method_full_label', 10, 2 );
+
+function filter_woocommerce_cart_shipping_method_full_label( $label, $method ) { 
+  $uploads_dir = get_template_directory_uri() . '/uploads/';
+    $delivery_truck_img = $uploads_dir . 'delivery-truck.png';
+    $inpost_img = $uploads_dir . 'inpost.png';
+
+
+    if ( $method->id == "inpost_paczkomaty:4" ) {
+        $label = '<img src="' . esc_url($inpost_img) . '" alt="Paczka" style="width:20px; height:auto;"> ' . $label;
+    } else if ( $method->id == "flat_rate:3" ) {
+        $label = '<img src="' . esc_url($delivery_truck_img) . '" alt="Kierowca" style="width:20px; height:auto;"> ' . $label;       
+    }
+    return $label; 
+}
+
+/*
+** Add custom icons to payment gateways
+*/
+add_filter('woocommerce_gateway_icon', 'custom_woocommerce_gateway_icon', 10, 2);
+add_filter('woocommerce_gateway_title', 'custom_woocommerce_gateway_title', 10, 2);
+
+function custom_woocommerce_gateway_icon($icon, $gateway_id) {
+    $uploads_dir = get_template_directory_uri() . '/uploads/';
+    $przelewy24_img = $uploads_dir . 'przelewy24.png';
+
+    if ($gateway_id == 'przelewy24') {
+        $icon = '<img src="' . esc_url($przelewy24_img) . '" alt="Przelewy24" style="width:20px; height:auto;"> ';
+    }
+
+    return $icon;
+}
+
+function custom_woocommerce_gateway_title($title, $gateway_id) {
+    $uploads_dir = get_template_directory_uri() . '/uploads/';
+    $przelewy24_img = $uploads_dir . 'przelewy24.png';
+
+    if ($gateway_id == 'przelewy24') {
+        // Usuń logo dodane przez wtyczkę Przelewy24 (jeśli istnieje)
+        $title = preg_replace('/<img[^>]+\>/', '', $title);
+
+        // Dodaj własne logo przed tytułem
+        $icon = '<img src="' . esc_url($przelewy24_img) . '" alt="Przelewy24" style="width:20px; height:auto;"> ';
+        $title = $icon . $title;
+    }
+
+    return $title;
+}
 
 
 
 
 
 
-// add_action('sn_payment_methods_dropdown', 'woocommerce_checkout_payment');
+
