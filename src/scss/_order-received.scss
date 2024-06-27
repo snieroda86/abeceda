@@ -1,0 +1,37 @@
+.woocommerce-order{
+	max-width: 960px;
+	margin:auto;
+
+	.woocommerce-thankyou-order-received{
+		text-align: center;
+		font-weight: 700;
+		color: $color-primary;
+		font-size: 21px;
+		margin-bottom: 35px;	
+	}
+
+	h2{
+		font-size: 21px;
+		margin-bottom: 25px;
+	}
+	h3{
+		font-size: 18px;
+		margin-bottom: 15px;
+	}
+
+	table{
+		background: #fff;
+	}
+}
+.woocommerce ul.order_details{
+	padding:0;
+	display: flex;
+	flex-wrap: wrap;
+	background: #fff;
+	padding:25px 15px;
+	border-radius: $radius;
+
+	li{
+		flex:1;
+	}
+}
