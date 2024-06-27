@@ -15,6 +15,9 @@ main#primary{
 .pos-relative{
   position: relative;  
 }
+.max-w-640{
+  max-width: 640px; 
+}
 
 h1,h2,h3,h4,h5,h6,p,input,li,button,span,a,strong,table,th,td{
   font-family: $main-font;

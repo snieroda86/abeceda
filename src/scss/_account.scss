@@ -1,0 +1,54 @@
+body.woocommerce-account{
+	.page-container-sn{
+		max-width: 1140px !important;
+	}
+
+	h1.page-title{
+		display: none;
+	}
+
+	#customer_login{
+		display: flex;
+		flex-wrap: wrap;
+
+		.col-1,.col-2{
+			width:50%;
+			padding:15px 25px;
+		}
+
+		@include breakpoint('tablet'){
+			.col-1,.col-2{
+				width:100%;
+				padding:15px 0;
+			}
+		}
+
+		h2{
+			font-size: 24px;
+		}
+
+		button.woocommerce-button{
+			margin:15px 0;
+		}
+	}
+
+	.woocommerce-form{
+		padding:0;
+		border:0;
+	}
+}
+
+.lost_reset_password{
+	p.woocommerce-form-row{
+		width: 100% !important;
+	}
+	input[type="password"],input[type="email"]{
+		width:100%;
+
+	}
+
+	.woocommerce-form-row--first{
+		margin:15px 0 !important;
+	}
+
+}
