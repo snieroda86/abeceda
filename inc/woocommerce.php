@@ -530,12 +530,14 @@ function filter_woocommerce_cart_shipping_method_full_label( $label, $method ) {
   $uploads_dir = get_template_directory_uri() . '/uploads/';
     $delivery_truck_img = $uploads_dir . 'delivery-truck.png';
     $inpost_img = $uploads_dir . 'inpost.png';
-
+    $free_img = $uploads_dir . 'free-delivery.svg';
 
     if ( $method->id == "inpost_paczkomaty:4" ) {
         $label = '<img src="' . esc_url($inpost_img) . '" alt="Paczka" style="width:20px; height:auto;"> ' . $label;
     } else if ( $method->id == "flat_rate:3" ) {
         $label = '<img src="' . esc_url($delivery_truck_img) . '" alt="Kierowca" style="width:20px; height:auto;"> ' . $label;       
+    }else if ( $method->id == "free_shipping:1" ) {
+        $label = '<img src="' . esc_url($free_img) . '" alt="Kurier" style="width:20px; height:auto;"> ' . $label;       
     }
     return $label; 
 }
@@ -543,36 +545,31 @@ function filter_woocommerce_cart_shipping_method_full_label( $label, $method ) {
 /*
 ** Add custom icons to payment gateways
 */
-add_filter('woocommerce_gateway_icon', 'custom_woocommerce_gateway_icon', 10, 2);
-add_filter('woocommerce_gateway_title', 'custom_woocommerce_gateway_title', 10, 2);
+function custom_woocommerce_gateway_icons( $icon, $gateway_id ) {
 
-function custom_woocommerce_gateway_icon($icon, $gateway_id) {
-    $uploads_dir = get_template_directory_uri() . '/uploads/';
-    $przelewy24_img = $uploads_dir . 'przelewy24.png';
+    $icon_url = get_template_directory_uri() . '/uploads/';
 
-    if ($gateway_id == 'przelewy24') {
-        $icon = '<img src="' . esc_url($przelewy24_img) . '" alt="Przelewy24" style="width:20px; height:auto;"> ';
+    switch( $gateway_id ) {
+        case 'paypal':
+            $icon = '<img src="' . $icon_url . 'paypal.png" alt="PayPal" />';
+            break;
+        case 'stripe':
+            $icon = '<img src="' . $icon_url . 'stripe.png" alt="Stripe" />';
+            break;
+        case 'bacs':
+            $icon = '<img src="' . $icon_url . 'przelew.jpg" alt="Bank Transfer" />';
+            break;
+        case 'cheque':
+            $icon = '<img src="' . $icon_url . 'cheque.png" alt="Cheque" />';
+            break;
+        case 'cod':
+            $icon = '<img src="' . $icon_url . 'za-pobraniem.png" alt="Cash on Delivery" />';
+            break;
     }
 
     return $icon;
 }
-
-function custom_woocommerce_gateway_title($title, $gateway_id) {
-    $uploads_dir = get_template_directory_uri() . '/uploads/';
-    $przelewy24_img = $uploads_dir . 'przelewy24.png';
-
-    if ($gateway_id == 'przelewy24') {
-        // Usuń logo dodane przez wtyczkę Przelewy24 (jeśli istnieje)
-        $title = preg_replace('/<img[^>]+\>/', '', $title);
-
-        // Dodaj własne logo przed tytułem
-        $icon = '<img src="' . esc_url($przelewy24_img) . '" alt="Przelewy24" style="width:20px; height:auto;"> ';
-        $title = $icon . $title;
-    }
-
-    return $title;
-}
-
+add_filter( 'woocommerce_gateway_icon', 'custom_woocommerce_gateway_icons', 10, 2 );
 
 
 

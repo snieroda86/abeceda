@@ -119,6 +119,10 @@ body.woocommerce-checkout{
 	
 }
 
+.payment-method-wrapper-sn{
+	margin-bottom: 40px; 
+}
+
 .woocommerce ul.payment_methods{
 	list-style: none;
 	padding:0;
@@ -132,6 +136,7 @@ body.woocommerce-checkout{
 			width:calc(100% - 20px);
 			display: flex;
 			align-items: center;
+			padding-left: 25px; 
 			img{
 				width:35px !important; 
 				margin:0 20px;
@@ -160,4 +165,69 @@ body.woocommerce-checkout{
 			text-align: right;
 		}	
 	}
+}
+
+table.woocommerce-checkout-review-order-table{
+
+	tbody{
+		td,th{
+			border-bottom: 2px solid #F0F0F0 !important;
+		}	
+	}
+	
+	td.product-image{
+		width:120px;
+		img{
+			max-width:100px;  
+		}
+	}
+
+
+	td.product-total{
+		text-align: right;
+
+		span.amount{
+			color:#626262;
+			span{
+				color:#626262;  
+			}
+		}
+	}
+
+	tfoot{
+		td{
+			text-align:right;  
+		}
+		td.order-total-sn-td{
+			text-align: left;
+
+			p{
+				font-weight: 400;
+			}
+
+			p.order-total-price-sn{
+				padding-top: 10px;
+				font-weight: 700;
+
+				span.amount{
+					color: $color-primary;
+					font-weight: 700;
+
+					span{
+						color: $color-primary;	
+						font-weight: 700;
+					}	
+				}
+				
+			}
+		}
+	}
+}
+
+div.woocommerce-terms-and-conditions-wrapper{
+	padding-bottom: 25px;
+}
+#add_payment_method #payment, .woocommerce-cart #payment, .woocommerce-checkout #payment{
+	background:#eee;
+	border-radius: $radius;  
 }
