@@ -14,50 +14,35 @@ get_header();
 	<div class="container-lg">
 		
 		<!-- Post content -->
-		<div class="row ">
-			<div class="col-lg-8 m-auto">
+		<div class="row g-lg-5 gy-5 gx-4 pt-5">
+			<div class="col-lg-8">
 				<?php
 				while ( have_posts() ) : the_post(); ?>
 
 					<div class="sp-content-wrapper-sn ptb-80">
-						<header>
-							<div class="sp-date-container">
-								<div class="post-meta-row d-flex align-items-center justify-content-center">
-				                   
-				                   <div class="post-meta-i d-flex align-items-center pr-1">
-				                       <img style="height: 20px;" src="<?php echo PATH_SN ?>/uploads/calendar2.svg" alt="Kalendarz">
-				                   </div>
-				                   <div class="post-meta-text text-center">
-				                       <h6><?php echo get_the_date(); ?></h6>
-				                   </div>
-				                </div>
-				                <h1 class="single-post-title">
-				                    <?php the_title(); ?>
-				                </h1>
-				                <div class="sp-category-sn">
-				                	<?php
-									$categories_list = get_the_category_list(', '); 
-
-									if ($categories_list) {
-									    echo '<span class="category-label-sn">Kategoria:</span> ' . $categories_list;
-									}
-									?>
-				                </div>
-
-				                <div>
-				                	<?php if(has_post_thumbnail()): ?>
-				                		<?php the_post_thumbnail('large' , ['class' => 'img-fluid mt-3']); ?>
-				                	<?php endif; ?>
-				                </div>
-                
+						<?php if(has_post_thumbnail()):
+							$thumb_url = get_the_post_thumbnail_url();
+						?>
+						<div class="s-post-thumbnail pb-5">
+							<div class="shadow-img-box pos-relative">
+								<img class="img-fluid pos-relative z-2 shadow-img-right" src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title(); ?>">
+								<div class="shadow-img-shadow-right"></div>
+								
 							</div>
-						</header>
-
-						<div class="sp-content-sn pt-5">
+						</div>
+						<?php endif; ?>
+						<div class="s-post-title">
+							<h1><?php the_title(); ?></h1>
+						</div>
+						<div class="s-post-meta">
+							<span><?php _e('Kategoria: ','web14devsn'); ?></span>
+							<span><?php  the_category(' , ') ?></span>
+						</div>
+						<div class="sp-content-sn pt-3">
 							<?php the_content(); ?>
 						</div>
 						<div class="blog-backward pt-5">
-							<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>" class="btn-main-sn">
+							<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>" class="btn btn-main-sn">
 								<?php _e('Powrót na bloga' , 'web14devsn'); ?>
 							</a>
 						</div>
@@ -66,71 +51,15 @@ get_header();
 				<?php endwhile; ?>
 
 			</div>
-			
+			<!-- Sidebar -->
+			<div class="col-lg-4">
+				<?php get_sidebar(); ?>
+			</div>
 
 		</div>
 	</div>
 
 </main><!-- #main -->
-
-	<!-- Related posts -->
-<section class="section-bg-grey pb-3">
-	 <!-- Related posts area -->
-      <div class="sp-related-area pt-5 pb-5">
-      	<div class="container-lg">
-      		<h2 class="section-title-sn">
-                  <?php _e('Zobacz również' , 'web14devsn'); ?>
-            </h2>
-
-            <div class="sp-related-container">
-                <?php 
-                function getRelatedBlogPosts() {
-				    global $post;
-
-				    $current_post_id = $post->ID;
-
-				    $args = array(
-				        'post_type'      => 'post',
-				        'posts_per_page' => 3,
-				        'post__not_in'   => array($current_post_id), 
-				    );
-
-				    $query = new WP_Query($args);
-
-				    if ($query->have_posts()) {
-				        // Zwróć wyniki zapytania
-				        return $query->posts;
-				    }
-
-				    return array();
-				}
-
-    
-				$related_posts = getRelatedBlogPosts();
-
-				if ($related_posts) : ?>
-					<div class="row post-grid-row-sn">
-					<?php 
-				    foreach ($related_posts as $post) : ?>
-				        <?php setup_postdata($post); ?>
-				        <div class="article-col-sn col-lg-4 col-md-6 col-sm-6 col-12 mb-4 mb-lg-0">
-									<?php get_template_part( 'template-parts/content'); ?>	
-								</div>
-				    <?php endforeach; ?>
-				    <?php wp_reset_postdata(); ?>
-				  </div>
-				<?php endif; ?>
-
-                
-                
-            </div>
-      	</div>
-          
-      </div>
-      <!-- End related -->
-</section>
-
-
 
 <?php
 get_footer();

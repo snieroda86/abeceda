@@ -19,7 +19,7 @@ main#primary{
   max-width: 640px; 
 }
 
-h1,h2,h3,h4,h5,h6,p,input,li,button,span,a,strong,table,th,td{
+h1,h2,h3,h4,h5,h6,p,input,li,button,span,a,strong,table,th,td,address{
   font-family: $main-font;
   padding:0;
   margin:0;
@@ -67,6 +67,7 @@ button , a.button , .btn{
 
    &:hover{
     color: #fff;
+    background: $gradient-light;
    }
 }
 

@@ -16,7 +16,7 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
-	<div class="container-lg page-container-sn">
+	<div class="container-lg page-container-sn <?php echo( is_user_logged_in() ) ? ' user-logged-in ' : ' user-logged-out '; ?>">
 		<?php
 		while ( have_posts() ) :
 			the_post();

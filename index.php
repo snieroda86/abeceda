@@ -13,12 +13,40 @@ get_header();
 	<main id="primary" class="site-main section-bg-grey">
 
 		<div class="container-lg">
-			<header class="page-header cat-header-sn">
-				<h1 class="page-title"><?php single_post_title(); ?></h1>
-			</header><!-- .page-header -->
+			
+			<section class="featured-articles-blog pb-100 pt-5">
+				<div class="row g-lg-5 gy-5">
+					<div class="col-md-6">
+						<div class="shadow-img-box pos-relative">
+							<img class="img-fluid pos-relative z-2 shadow-img-left" src="<?php echo PATH_SN ?>/uploads/shadow-left.jpg" alt="O nas">
+							<div class="shadow-img-shadow-left"></div>
+							<div class="shadow-box-content">
+								<h2>Tytuł artykułu wyróżnionego</h2>
+								<a href="#" class="btn">
+									<span class="pe-2 text-white">Zobacz</span>
+									<span><img src="<?php echo PATH_SN ?>/uploads/arrow-more-link-white.png" alt="Więcej"></span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="shadow-img-box pos-relative">
+							<img class="img-fluid pos-relative z-2 shadow-img-right" src="<?php echo PATH_SN ?>/uploads/img-cropped.jpg" alt="O nas">
+							<div class="shadow-img-shadow-right"></div>
+							<div class="shadow-box-content">
+								<h2>Tytuł artykułu wyróżnionego</h2>
+								<a href="#" class="btn">
+									<span class="pe-2 text-white">Zobacz</span>
+									<span><img src="<?php echo PATH_SN ?>/uploads/arrow-more-link-white.png" alt="Więcej"></span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 			
 			<?php if ( have_posts() ) : ?>
-				<div class="row post-grid-row-sn">
+				<div class="row post-grid-row-sn g-lg-5">
 					<?php
 					/* Start the Loop */
 					while ( have_posts() ) : the_post(); ?>

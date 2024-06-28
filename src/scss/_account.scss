@@ -1,5 +1,5 @@
 body.woocommerce-account{
-	.page-container-sn{
+	.page-container-sn.user-logged-out{
 		max-width: 1140px !important;
 	}
 
@@ -19,7 +19,7 @@ body.woocommerce-account{
 		@include breakpoint('tablet'){
 			.col-1,.col-2{
 				width:100%;
-				padding:15px 0;
+				padding:15px 0; 
 			}
 		}
 
@@ -51,4 +51,61 @@ body.woocommerce-account{
 		margin:15px 0 !important;
 	}
 
+}
+.woocommerce .woocommerce-customer-details address{
+	background: #fff;
+	padding:30px;
+}
+.woocommerce-column--billing-address{
+	margin-bottom: 30px;
+}
+.woocommerce-account .woocommerce-MyAccount-navigation{
+	background: $color-primary;
+	border-radius: $radius;
+	padding:30px;
+	width: calc(30% - 30px);
+	margin-right: 30px;
+
+	@include breakpoint('tablet'){
+		width:100%;
+		margin-right: 0;
+		margin-bottom: 40px;
+	}
+
+	ul{
+		list-style-type: none;
+		padding:0;
+		margin:0;
+
+		li{
+			padding-bottom: 15px;
+			a{
+				color: #fff;
+				text-decoration: none;
+				font-weight: 600;
+				position: relative;
+
+				&::before{
+					content:url('../../uploads/angle-right-white.svg');
+					margin-right: 10px;
+				}
+
+			}
+
+		}
+		li:last-child{
+			padding-bottom: 0;
+		}
+	}
+}
+
+.woocommerce-MyAccount-content{
+	a{
+		color: $color-primary;
+		text-decoration: none;
+		font-weight: 600;
+	}
+}
+.woocommerce table.my_account_orders .button{
+	margin:5px auto !important;
 }
