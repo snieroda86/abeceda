@@ -105,7 +105,54 @@ body.woocommerce-account{
 		text-decoration: none;
 		font-weight: 600;
 	}
+
+	h2,h3,legend{
+		font-size: 21px;
+		padding: 15px 0;
+		font-weight: 700;
+		font-family: $main-font;  
+	}
 }
 .woocommerce table.my_account_orders .button{
 	margin:5px auto !important;
+}
+
+/* 
+** Wishlist page
+ */
+body.tinvwl-theme-style{
+	h1.page-title{
+		display: none;
+	}
+
+	table{
+		td.product-action{
+			a.button,button{
+				white-space: nowrap;
+				color: #fff;
+
+				span{
+					color: #fff !important;
+				}
+			}
+		}
+
+		button[name="tinvwl-action-product_apply"]{
+
+			span.tinvwl-mobile{
+				display: none !important;
+			}
+		}
+
+		.tinvwl-to-right{
+			button{
+				max-width: 300px;
+			}
+		}
+		button[name="tinvwl-remove"]{
+			background: #fff !important; 
+		}
+	}
+
+
 }

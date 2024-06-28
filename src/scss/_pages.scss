@@ -1,1 +1,47 @@
- 
+/* 
+** Contact
+*/ 
+.rounded-c-info{
+	background: $color-primary-light;
+	padding:30px 40px;
+	border-radius:0 35px 0 35px  ;
+
+	.rci-icon{
+		width:26px;
+	}
+	.rci-text{
+		width:calc(100% - 26px);
+
+		a,p{
+			text-decoration: none;
+			font-weight: 600;
+		}
+	}
+	.rounded-c-info-item{
+		margin-bottom: 10px;
+	}
+	.rounded-c-info-item:last-child{
+		margin-bottom: 0;
+	}
+}
+
+.cooperation-info-section , ul.check-list-sn{
+	ul{
+		padding:0;
+		margin:0;
+		margin-bottom: 15px;
+		margin-top: 15px;
+		list-style-type: none;
+
+		li::before{
+			content: url(../../uploads/check-blue.png);
+			margin-right: 8px;
+		}
+	}
+}
+
+.cf-wrapper-sn{
+	background: $gradient-light;
+	padding:50px;
+	border-radius:  75px 0 75px 0;
+}

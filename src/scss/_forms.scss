@@ -46,3 +46,43 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 } 
+
+div.wpforms-container-full .wpforms-field.wpforms-field-checkbox ul li input+label, div.wpforms-container-full .wpforms-field.wpforms-field-radio ul li input+label, div.wpforms-container-full .wpforms-field.wpforms-field-payment-checkbox ul li input+label, div.wpforms-container-full .wpforms-field.wpforms-field-payment-multiple ul li input+label, div.wpforms-container-full .wpforms-field.wpforms-field-gdpr-checkbox ul li input+label{
+	color:#fff;
+	font-size: 14px;
+}
+
+.wpforms-submit{
+	  background: $gradient-dark  !important;
+	  color: #fff !important;
+	  padding:10px 25px !important;
+	   border-radius: 30px !important;
+	   font-family: $main-font !important;
+	   font-weight: 600 !important;
+	   outline: 0 !important;
+	   border:0 !important;
+	   width:100% !important;
+
+	   &::after{
+	   	display: none !important;
+	   }
+
+	   &:hover{
+	    color: #fff !important;
+	    background: $gradient-light !important;
+	   }
+
+}
+.wpforms-container .wpforms-field, .wp-core-ui div.wpforms-container .wpforms-field{
+	padding:5px 0 !important;
+}
+
+.wpforms-form{
+	&  input:not([type="submit"]), 
+	& textarea, 
+	& select {
+	    border: none !important;
+	    border-radius: $radius !important;
+
+	}
+}

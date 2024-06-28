@@ -13,65 +13,97 @@ get_header();
 		
 		<?php while ( have_posts() ) : the_post(); ?>
 		<div class="container-lg pt-5 pb-5">
-				<div class="row">
-					<div class="col-lg-4 col-md-6">
-						<div class="contact-info-sn pt-3 mb-3">
-							<div class="contact-info-sn-box">
-								<h1 class="contact-info-h1">Dane kontaktowe</h1>
-								<div>
-									<?php the_content(); ?>
+				<div class="row g-5">
+					<div class="col-md-6">
+						<div class="row g-5">
+							<div class="col-xl-6 col-lg-12">
+								<h3>Kontakt</h3>
+
+								<div class="contact-info-section pt-4 mb-4">
+									<div class="c-info-text">
+										<p><b>ABECEDA - centrum języków obcych</b></p>
+										<p>ABECEDA Piotr Zalewski</p>
+										<p>17-go Sierpnia 2/13,</p>
+										<p>41-503 Chorzów</p>
+										<p>NIP: 6272628891</p>
+										
+									</div>
+									<h6 class="mt-4 mb-3">Księgarnia</h6>
+									<div class="rounded-c-info mt-2">
+
+										<!-- Phone -->
+										<div class="rounded-c-info-item d-flex">
+											<div class="rci-icon">
+												<img src="<?php echo PATH_SN ?>/uploads/phone.png" alt="Phone">
+											</div>
+											<div class="rci-text">
+												<p>+420 730 975 941</p>
+											</div>
+										</div>
+										<!-- Mobile -->
+										<div class="rounded-c-info-item d-flex">
+											<div class="rci-icon">
+												<img src="<?php echo PATH_SN ?>/uploads/mobile-black.png" alt="Mobile">
+											</div>
+											<div class="rci-text">
+												<p>+420 730 975 941</p>
+											</div>
+										</div>
+										<!-- Email -->
+										<div class="rounded-c-info-item d-flex">
+											<div class="rci-icon">
+												<img src="<?php echo PATH_SN ?>/uploads/envelope-black.svg" alt="Email">
+											</div>
+											<div class="rci-text">
+												<p><a href="mailto:sklep@abeceda.pl">sklep@abeceda.pl</a></p>
+											</div>
+										</div>
+
+									</div>
 								</div>
+							</div>
+							<div class="col-xl-6 col-lg-12">
+								<h3>Współpraca</h3>
+								<div class="cooperation-info-section pt-4">
+									<p><b>Współpracujemy w zakresie:</b></p>
+									<ul class="check-list-sn">
+										<li>tłumaczeń pisemnych i ustnych</li>
+										<li>kursach</li>
+										<li>obsługach firm.</li>
 
-								<div class="pt-3">
-									<ul class="contact-sn-list">
+									</ul>
+									<div class="pt-2">
+										<p><b>Jesteś zainteresowany?</b></p>
+										<p><b>Jesteśmy do twojej dyspozycji!</b></p>
 
-										<?php if(get_field('telefon_kontaktowy' , 'option')): ?>
-						        		<li>
-						        			<div class="d-flex pb-1">
-						        				<div class="d-flex align-items-center pr-1">
-						        					<img src="<?php echo PATH_SN ?>/uploads/phone.png">
-						        				</div>
-						        				<div class="d-flex align-items-center">
-						        					<a href="tel:<?php the_field('telefon_kontaktowy' , 'option') ?>"  class="p-0 m-0">
-						        						<p class=" m-0 font-weight-bold"><?php the_field('telefon_kontaktowy' , 'option') ?></p>
-						        					</a>
-						        				</div>
+										<div class="rounded-c-info mt-3">
+											<!-- Email -->
+											<div class="rounded-c-info-item d-flex">
+												<div class="rci-icon">
+													<img src="<?php echo PATH_SN ?>/uploads/envelope-black.svg" alt="Email">
+												</div>
+												<div class="rci-text">
+													<p><a href="mailto:sklep@abeceda.pl">sklep@abeceda.pl</a></p>
+												</div>
+											</div>
 
-						        			</div>
-						        		</li>
-						        		<?php endif; ?>
-
-						        		<?php if(get_field('adres_email' , 'option')): ?>
-						        		<li>
-						        			<div class="d-flex pb-1">
-						        				<div class="d-flex align-items-center pr-1">
-						        					<img src="<?php echo PATH_SN ?>/uploads/envelope.png">
-						        				</div>
-						        				<div class="d-flex align-items-center">
-						        					<a href="mailto:<?php the_field('adres_email' , 'option') ?>"  class="p-0 m-0">
-						        						<p class="footer-text m-0">
-						        							<?php the_field('adres_email' , 'option') ?>
-						        								
-						        						</p>
-						        					</a>
-						        				</div>
-
-						        			</div>
-						        		</li>
-						        		<?php endif; ?>
-						        	</ul>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-8 col-md-6 pl-md-5">
-						<div class="cf-wrapper-sn  pt-3">
-							<h2 class="section-title-sn pb-2 pt-0 mt-0">
-								Formularz kontaktowy
-							</h2>
-							<div class="cf-form-wrapper">
-								<?php echo do_shortcode('[wpforms id="142"]'); ?>
+					<div class="col-md-6">
+						<div class="cf-wrapper-sn">
+							<div class="cf-wrapper-inner">
+								<h3 class="text-white text-center">
+									Wypełnij formularz
+								</h3>
+								<div class="cf-form-wrapper">
+									<?php echo do_shortcode('[wpforms id="222"]'); ?>
+								</div>	
 							</div>
+							
 						</div>
 					</div>
 				</div>
