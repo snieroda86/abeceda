@@ -23,19 +23,22 @@ BREAKPOINTS
  @mixin breakpoint($point) {
   
 
-   @if $point == x-large { 
+  @if $point == x-large { 
     @media (max-width: 1450px) { @content ; }
   }
-   @else if $point == large { 
+  @else if $point == large { 
     @media (max-width: 1199px) { @content ; }
   }
-   @else if $point == medium {
+  @else if $point == medium {
      @media (max-width: 991px) { @content ; }
   }
-    @else if $point == tablet {
+  @else if $point == halfmedium {
+     @media (max-width: 835px) { @content ; }
+  }
+  @else if $point == tablet {
      @media (max-width: 767px) { @content ; }
   }
-   @else if $point == small {
+  @else if $point == small {
      @media (max-width: 576px)  { @content ; }
   }
   @else if $point == phone {

@@ -19,6 +19,24 @@ function iconic_cart_count_fragments( $fragments ) {
     
 }
 
+/*
+** Update mincart
+*/
+add_filter( 'woocommerce_add_to_cart_fragments', function($fragments) {
+
+    ob_start();
+    ?>
+
+    <div id="minicart-sn">
+        <?php woocommerce_mini_cart(); ?>
+    </div>
+
+    <?php $fragments['div#minicart-sn'] = ob_get_clean();
+
+    return $fragments;
+
+} );
+
 // remove "SALE" badge
 add_filter('woocommerce_sale_flash', 'custom_remove_sale_badge');
 function custom_remove_sale_badge() {

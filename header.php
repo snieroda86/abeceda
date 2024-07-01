@@ -29,7 +29,7 @@
 		<div class="header-top-bar">
 			<div class="container-lg">
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-lg-4 d-lg-block d-none">
 						<div class="header-contact-box d-flex">
 							<!-- Phone  -->
 							<div class="contact-item-sn d-flex me-4">
@@ -52,7 +52,7 @@
 						</div>
 						
 					</div>
-					<div class="col-md-8">
+					<div class="col-lg-8 col-12">
 						<div class="secondary-top-menu">
 							<?php
 				            wp_nav_menu(array(
@@ -71,25 +71,25 @@
 			</div>
 		</div>
 		
-		<nav class="navbar navbar-expand-md navbar-light d-block">
+		<nav class="navbar navbar-expand-lg navbar-light d-block">
 		    <div class="header-middle-bar">
 		    	<div class="container-lg">
 		    		<div class="row">
 			    		<div class="col-12 d-flex flex-wrap align-items-center">
 			    			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
-				            <span class="navbar-toggler-icon"></span>
-				        </button>
-				        <div class="site-logo"> 
-				        	<?php 
-					        if ( function_exists( 'the_custom_logo' ) ) {
-								the_custom_logo();
-							}
-					        ?>	
-				        </div>
+				            	<img src="<?php echo PATH_SN ?>/uploads/menu.png" alt="Menu">
+				        	</button>
+					        <div class="site-logo"> 
+					        	<?php 
+						        if ( function_exists( 'the_custom_logo' ) ) {
+									the_custom_logo();
+								}
+						        ?>	
+					        </div>
 
-				        <div class="header-search-bar ms-auto">
-				        	<?php echo do_shortcode('[fibosearch]'); ?>
-				        </div>	
+					        <div class="header-search-bar ms-auto">
+					        	<?php echo do_shortcode('[fibosearch]'); ?>
+					        </div>	
 					    <?php if ( class_exists( 'woocommerce' ) ): ?>
 				        	<div class="header-shop-icons d-flex align-items-center">
 					        	<div class="header-shop-icon-item">
@@ -99,7 +99,7 @@
 					        				<div class="text-center i-header-wrap">
 					        					<img src="<?php echo PATH_SN ?>/uploads/user.png" alt="User">
 					        				</div>
-					        				<div>
+					        				<div class="hsi-label">
 					        					<p class="text-center">
 					        						<?php _e('Profil' , 'web14devsn'); ?>
 					        					</p>
@@ -113,12 +113,12 @@
 									<?php } ?>
 					        	</div>
 					        	<div class="header-shop-icon-item">
-					        		<a href="#" class="d-block">
+					        		<a href="#" class="d-block shopping-cart-icon-sidecart">
 				        				<div class="text-center i-header-wrap pos-relative">
 				        					<img src="<?php echo PATH_SN ?>/uploads/shopping-bag.png" alt="bag">
 				        					<div class="header-cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></div>
 				        				</div>
-				        				<div>
+				        				<div class="hsi-label">
 				        					<p class="text-center">
 				        						<?php _e('Koszyk' , 'web14devsn'); ?>
 				        					</p>
@@ -163,6 +163,22 @@
 		    </div>
 		    
 		</nav>
+
+		<!-- Sidebar - shopping cart -->
+		<div id="shopping-cart-sidebar-sn" class="sidebar-sn">
+		    <div>
+		        <div class="minicart-warpper">
+		            <div id="minicart-sn">
+		                <?php woocommerce_mini_cart(); ?>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+
+		<!-- Sidebar overlay -->
+		<div class="sidebar-cart-overlay"> 
+		</div>
+		<!-- Sidebar cart end -->
 
 	</header><!-- #masthead -->
 
