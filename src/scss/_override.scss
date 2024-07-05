@@ -1,0 +1,23 @@
+body.tinvwl-theme-style table td.product-action a.button, body.tinvwl-theme-style table td.product-action button{
+	background: #fff !important;
+	color: $text-color;
+	box-shadow: inset 0px 0px 0px 2px rgba(22, 124, 142, 1);
+	transition: background 0.3s;
+
+    &:hover{
+      background: $color-primary !important;
+
+      span{
+      	color: #fff !important;	
+      }
+      color: #fff !important;
+    }
+}
+body.tinvwl-theme-style table td.product-action a.button span, body.tinvwl-theme-style table td.product-action button span{
+	color:$text-color !important;
+}
+.button.tinv-next , .button.tinv-prev{
+	span{
+		color: #fff !important;
+	}
+}

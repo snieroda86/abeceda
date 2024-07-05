@@ -50,6 +50,7 @@ li.product a{
 				font-size: 21px;
 				font-weight: 700;
 
+
 				bdi{
 					color: $color-primary ;
 
@@ -62,10 +63,10 @@ li.product a{
 
 				del{
 					font-size: 16px;
-					color: #ddd;
+					color: $dark-grey;
 
 					bdi,span{
-						color: #ddd;
+						color: $dark-grey;
 					}
 				}
 			}
@@ -133,14 +134,70 @@ ul.products li.product{
 
 .loop-products-col{
 	width:calc(100% - 360px); 
+	@include breakpoint('medium'){
+		width:100%;
+		
+	}
+}
+
+.angle-dropdown-cat button{
+	background: transparent !important;
 }
 .shop-sidebar-sn{
 	width:360px;
 	padding-right: 30px;
+
+	@include breakpoint('medium'){
+		width:100%;
+		padding:15px;
+		margin-bottom: 10px;
+	}
+
+	@include breakpoint('small'){
+		h2{
+			display: none;
+		}
+		h3.berocket_ajax_group_filter_title{
+			// display: none;
+		}
+	}
+}
+
+.shop-cat-banner-mobile{
+	margin-bottom: 40px;
+	.shop-cat-banner{
+		position: relative;
+		z-index: 2;
+		min-height: 180px;  
+		border-radius: 50px 0;
+		padding:25px; 
+
+	}
+
+	.shop-cat-banner-inner{
+		text-align: center;
+		h1{
+			margin-bottom: 15px;
+		}
+		.shop-cat-description{
+			margin-bottom: 30px;
+		}
+	}
+
+	.shop-cat-banner-shadow{
+		background: $gradient-light;
+		width:94%;
+		height: 100%;
+		position: absolute;
+		right:-15px;
+		bottom:-15px;
+		border-radius: 60px 0; 
+
+	}	
 }
 
 .shop-cat-banner-wrapper{
-	margin-bottom: 100px;
+	margin-bottom: 70px;
 	.shop-cat-banner{
 		position: relative;
 		z-index: 2;
@@ -167,4 +224,33 @@ ul.products li.product{
 		border-radius: 110px 0;
 
 	}	
+}
+section.main-categories-filter{
+	margin-bottom: 55px;
+	.card-header{
+		border-radius: 0 30px 30px 0;
+	}
+	.card-header:hover{
+		background:#F1FAFB;
+	} 
+
+	.list-group-item{
+		border:0;
+		border-radius: 0 30px 30px 0;
+
+		&:hover{
+			background:#F1FAFB;
+		}
+	}
+}
+.bapf_sfilter{
+	border-bottom: 1px solid $dark-grey;
+	padding-bottom: 25px;
+	margin-bottom: 25px;
+}
+.woocommerce:where(body:not(.woocommerce-uses-block-theme)) ul.products li.product .price{
+	padding-top: 10px;
+}
+.woocommerce ul.products li.product .price ins{
+	text-decoration: none; 
 }

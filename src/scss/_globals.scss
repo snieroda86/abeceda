@@ -7,16 +7,34 @@ body{
 }
 main#primary{
   padding-bottom: 100px;
+  overflow-x:hidden;
 }
-
 .container-lg{
   max-width: 1440px !important;
+
+  @media(max-width: 1500px){
+    width:92%;
+  }
+  @include breakpoint('medium'){
+    width:94%;
+  }
+  @include breakpoint('tablet'){
+    width:96%;
+  }
+  @include breakpoint('small'){
+    width:100%;
+  }
 }
 .pos-relative{
   position: relative;  
 }
 .max-w-640{
   max-width: 640px; 
+}
+@media( max-width:1140px){
+  .ftr-next, .ftr-prev , .rec-next , .rec-prev{
+    display:none !important;
+  }
 }
 
 h1,h2,h3,h4,h5,h6,p,input,li,button,span,a,strong,table,th,td,address{
@@ -39,6 +57,12 @@ h2{
 h3{
   font-size: 22px;
 }
+
+@include breakpoint('small'){
+  h2.section-title-sn{
+    font-size: 25px;  
+  }
+}
 .pt-100{
   padding-top: 100px;
 }
@@ -57,8 +81,12 @@ h3{
 .pb-40{
   padding-bottom: 40px;
 }
+.filter-collapse-btn{
+  padding:10px 25px !important;
+  width:100%;
+}
 button , a.button , .btn{
-  background: $gradient-dark;
+  background: $gradient-dark; 
   color: #fff;
   padding:10px 25px;
    border-radius: 30px;
@@ -166,4 +194,15 @@ ul.slick-dots{
     }
 
   }
+}
+
+body .tinv-modal-inner{
+  .tinvwl_button_view , .tinvwl_button_close{
+    border:0 !important;
+    box-shadow: 0 !important;
+    outline: none !important; 
+  }
+}
+.tinv-wraper.tinv-wishlist .tinvwl_add_to_wishlist_button:hover{
+  background:#c3f6ff;
 }

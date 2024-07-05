@@ -3,3 +3,10 @@
 		max-width: 260px;
 	}
 } 
+
+@include breakpoint('small'){
+	.woocommerce ul.products[class*=columns-] li.product, .woocommerce-page ul.products[class*=columns-] li.product{
+		width:100%;
+		clear:none;
+	}
+}

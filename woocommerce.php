@@ -13,7 +13,8 @@ get_header(); ?>
     <div class="container-lg page-container-sn woocommerce-sn">
         <div class="row">
             <?php if(is_shop()): ?>
-            <div class="shop-cat-banner-wrapper pos-relative">
+            <!-- Desktop -->
+            <div class="shop-cat-banner-wrapper pos-relative d-sm-block d-none">
                 <div class="shop-cat-banner" style="background-image: url(<?php echo PATH_SN ?>/uploads/banner-kategoria.jpg);background-size:cover;background-position: right top;">
                     <div class="shop-cat-banner-inner">
                         <h1>
@@ -35,6 +36,33 @@ get_header(); ?>
                 </div>
                 <div class="shop-cat-banner-shadow"></div>
             </div>
+
+            <!-- Mobile -->
+            <div class="shop-cat-banner-mobile pos-relative d-sm-none d-block">
+                <div class="shop-cat-banner-inner">
+                    <h1>
+                        <?php 
+                            echo $shop_page_title;
+                         ?>
+
+                    </h1>
+                    <div class="shop-cat-description">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. </p>
+                    </div>    
+                </div> 
+                <div class="shop-cat-mobile-img-wrap pos-relative">
+                    <div class="shop-cat-banner" style="background-image: url(<?php echo PATH_SN ?>/uploads/banner-kategoria.jpg);background-size:cover;background-position: right top;">
+                    
+                    
+                    </div>
+                    <div class="shop-cat-banner-shadow"></div>    
+                </div>
+                
+            </div>
+
             <?php endif; ?>
             <!-- Category banner -->
             <?php if(is_product_category()): ?>
@@ -48,7 +76,9 @@ get_header(); ?>
                 $cat_bg_image = PATH_SN.'/uploads/banner-kategoria.jpg';
             }
             ?>
-            <div class="shop-cat-banner-wrapper pos-relative">
+
+            <!-- Desktop -->
+            <div class="shop-cat-banner-wrapper pos-relative d-sm-block d-none">
                 <div class="shop-cat-banner" style="background-image: url( <?php echo esc_url($cat_bg_image) ?>);background-size:cover;background-position: right top;">
                     <div class="shop-cat-banner-inner">
                         <h1>
@@ -65,6 +95,29 @@ get_header(); ?>
                 </div>
                 <div class="shop-cat-banner-shadow"></div>
             </div>
+
+            <!-- Mobile -->
+            <div class="shop-cat-banner-mobile pos-relative d-sm-none d-block">
+                <div class="shop-cat-banner-inner">
+                    <h1>
+                        <?php echo single_term_title(); ?>
+                    </h1>
+                    <?php if($category_description): ?>
+                        <div class="shop-cat-description">
+                            <p><?php echo $category_description; ?></p>
+                        </div>    
+                    <?php endif; ?> 
+                </div> 
+                <div class="shop-cat-mobile-img-wrap pos-relative">
+                    <div class="shop-cat-banner" style="background-image: url( <?php echo esc_url($cat_bg_image) ?>);background-size:cover;background-position: right top;">
+                    
+                    
+                    </div>
+                    <div class="shop-cat-banner-shadow"></div>    
+                </div>
+                
+            </div>
+
             <?php endif; ?>
 
             <!-- Category banner end -->
@@ -97,7 +150,8 @@ get_header(); ?>
                         <?php get_template_part('template-parts/woocommerce/subcategories'); ?>
                     <?php endif; ?>
                     <?php if ( is_active_sidebar( 'sidebar-shop' ) ) { ?>
-                        <?php dynamic_sidebar('sidebar-shop'); ?>
+                        <?php // dynamic_sidebar('sidebar-shop'); ?>
+                        <?php get_sidebar('shop'); ?>
                     <?php } ?>
                 </div>
             <?php endif; ?>

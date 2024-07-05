@@ -62,15 +62,17 @@ div.wpforms-container-full .wpforms-field.wpforms-field-checkbox ul li input+lab
 	   outline: 0 !important;
 	   border:0 !important;
 	   width:100% !important;
+	   font-size: 16px !important;
 
 	   &::after{
 	   	display: none !important;
 	   }
 
 	   &:hover{
-	    color: #fff !important;
-	    background: $gradient-light !important;
-	   }
+			background: #fff !important;
+			color: $text-color !important;
+			box-shadow: inset 0px 0px 0px 2px rgba(26, 32, 46, 1) !important;
+		}
 
 }
 .wpforms-container .wpforms-field, .wp-core-ui div.wpforms-container .wpforms-field{

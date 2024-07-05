@@ -2,6 +2,9 @@ body.woocommerce-cart {
 	.page-title{
 		display: none;
 	}
+	.entry-content{
+		padding-bottom: 0 !important;
+	}
 
 	main#primary{
 		background: $light-grey;
@@ -19,7 +22,7 @@ body.woocommerce-cart {
 	border-radius: $radius;
 
 	@include breakpoint('small'){
-		padding:30px 15px;
+		padding:30px 15px; 
 	}
 
 }
@@ -55,6 +58,7 @@ body.woocommerce-cart{
 	   		}
 	   		span.amount{
 	   			color: $text-color;
+	   			padding-left: 5px;
 
 	   			span{
 						color: $text-color;
@@ -94,6 +98,14 @@ body.woocommerce-cart{
 	   background-color: $color-primary;
 	   color: white;
 	   border-color: $color-primary;
+
+	   span.amount{
+	   	color: #fff;
+
+	   	span{
+	   		color:#fff;
+	   	}
+	   }
 	}
 }
 
@@ -237,9 +249,9 @@ body .qib-button-wrapper{
 	// margin-top: 30px;
 	// padding-top: 30px;
 	// border-top:2px solid $color-primary;
-	padding:15px;
+	padding:25px;
 	background: $color-primary;
-	border-radius: $radius;
+	border-radius:0 45px ;
 	margin-top: 25px;
 	
 
@@ -251,6 +263,13 @@ body .qib-button-wrapper{
 	button[type="submit"]{
 		width:140px !important;
 		margin-left: 10px;
+		transition: 0.2s;
+
+		&:hover{
+			background: #fff;
+			color: $text-color;
+			box-shadow: inset 0px 0px 0px 2px rgba(26, 32, 46, 1);
+		}
 	}
 }
 
@@ -301,4 +320,7 @@ body.woocommerce-cart {
 			padding-bottom: 15px;
 		}
 	}
+}
+.woocommerce .cart-collaterals .cart_totals, .woocommerce-page .cart-collaterals .cart_totals{
+	border-radius: 45px 0 45px 0;
 }

@@ -123,6 +123,28 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 					<button type="submit" class="woocommerce-Button woocommerce-button button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?> woocommerce-form-register__submit" name="register" value="<?php esc_attr_e( 'Register', 'woocommerce' ); ?>"><?php esc_html_e( 'Register', 'woocommerce' ); ?></button>
 				</p>
 
+				<p class="woocommerce-form-row form-row">
+					<h5>Warto mieć konto w abeceda.pl</h5>
+					<div class="pt-3">
+						<div class="d-flex align-items-center account-adv-item">
+							<div class="icon-account-adv">
+								<img src="<?php echo PATH_SN ?>/uploads/kupuj.png" alt="Torba">
+							</div>
+							<div class="label-account-adv">
+								<p>Kupuj <b>2x szybciej</b></p> 
+							</div>
+						</div>
+						<div class="d-flex align-items-center account-adv-item">
+							<div class="icon-account-adv">
+								<img src="<?php echo PATH_SN ?>/uploads/timer.png" alt="Stoper">
+							</div>
+							<div class="label-account-adv">
+								<p>Załóż konto już w  <b>10 sekund</b></p>
+							</div>
+						</div>
+					</div>
+				</p>
+
 				<?php do_action( 'woocommerce_register_form_end' ); ?>
 
 			</form>			

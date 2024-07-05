@@ -13,7 +13,8 @@ header#masthead{
 				margin:0;
 				color: #fff;  
 				font-weight: 600;
-				text-decoration: none;      
+				text-decoration: none;   
+				font-size: 14px;    
 			}
 		}
 	}
@@ -35,6 +36,11 @@ header#masthead{
 			font-weight: 600;
 			padding-right: 15px;
 			padding-left: 15px;
+			transition: 0.3s;
+
+			&:hover{
+				color: lighten($text-color, 35%);
+			}
 
 		}
 		
@@ -82,6 +88,11 @@ a.wishlist_products_counter{
 }
 .header-shop-icon-item{
 	margin-left: 25px;
+	transition: 0.3s;
+
+	&:hover{
+		opacity: 0.75;
+	}
 	a,p{
 		color:#fff;
 		text-decoration: none;
@@ -184,6 +195,11 @@ a.wishlist_products_counter{
 	 	text-decoration: none;
 	 	font-size: 14px;
 	 	font-weight: 600;
+	 	transition: 0.3s;
+
+	 	&:hover{
+	 		color: rgba(255,255,255,0.85);
+	 	}
 	 }
 }
 
@@ -253,6 +269,10 @@ a.wishlist_products_counter{
   				padding:10px 25px !important; 
   				display: inline-flex !important;
   				line-height: unset !important;
+
+  				&:hover{
+  					color: #fff !important;
+  				}
   			}
   		}
   	}
@@ -510,7 +530,7 @@ a.wishlist_products_counter{
 
 // Sidebar cart overlay
 .sidebar-cart-overlay{
-	background: rgba(104, 79, 66 , 0.5);
+	background: rgba(0, 0, 0 , 0.4);
 	position: fixed;
 	top:135px;
 	left:0;
@@ -588,58 +608,16 @@ a.wishlist_products_counter{
 		padding:15px;
 		font-weight: 700;
 
-		// &::after{
-		// 	content: url('../../uploads/angle-right-lightcolor-primary.svg');
-		// 	position: absolute;
-		// 	right:15px;
-		// 	top:50%;
-		// 	transform: translateY(-40%);  
-			
-
-
-		// }
-
-		// &::before{
-		// 	content: url('../../uploads/angle-right.svg');
-		// 	position: absolute;
-		// 	right:15px;
-		// 	top:50%;
-		// 	transform: translateY(-40%);
-		// 	opacity:0;
-
-
-		// }
-
 		&:hover{
-			// background: $color-primary;
 			color: #fff;
 		}
-
-		// &:hover::after{
-		// 	opacity: 0;
-		// }
-
-		// &:hover::before{
-		// 	opacity: 1;
-		// }
-
 
 	}
 
 	a.checkout{
-		// background: $color-primary;
+		
 		color: #fff;
 		border:1px solid $color-primary;
-
-		// &::after{
-		// 	content: url('../../uploads/angle-right.svg');
-
-		// }
-
-		// &:hover{
-		// 	background: $color-primary;
-		// 	color: #fff;
-		// }
 	}
 }
 .navbar-toggler{
@@ -671,5 +649,10 @@ a.wishlist_products_counter{
 		display: block;
 			opacity: 1;
 			visibility: visible;
+	}
+}
+@media( max-width:576px){
+	.sidebar-sn , .sidebar-cart-overlay{
+		top:118px;
 	}
 }

@@ -25,7 +25,11 @@
 
 				&:hover{
 					background: $color-primary;
-					color: $text-color;     
+					color: #fff;  
+
+					svg path{
+						fill: #fff !important;
+					}   
 				}
 			}
 
@@ -40,70 +44,81 @@
 	}
 } 
 
-.shadow-img-box{
-	position: relative;
-	.shadow-img-right{
-		border-radius: 75px 0 75px 0; 
-		height: 450px;
-		width:100%;
-		object-fit: cover;
+.ftr-col-left{
+	.shadow-img-box{
+		position: relative;
+		.shadow-img-post{
+			border-radius:0 75px 0 75px ; 
+			height: 450px;
+			width:100%;
+			object-fit: cover;
 
-		@include breakpoint('tablet'){
-			height: 350px;
-			border-radius: 45px 0 45px 0;
+			@include breakpoint('tablet'){
+				height: 350px;
+				border-radius:0 45px 0 45px ;
+			}
+
+			@include breakpoint('small'){
+				height: 240px;
+			}
 		}
 
-		@include breakpoint('small'){
-			height: 240px;
-		}
-	}
+		.shadow-img-shadow{
+			background: $gradient-light;
+			height:80%;
+			width:80%; 
+			position: absolute;
+			left:-15px;
+			bottom:-15px;
+			border-radius: 0 0 0 90px; 
 
-	.shadow-img-shadow-right{
-		background: $gradient-light;
-		height:80%;
-		width:80%; 
-		position: absolute;
-		right:-15px;
-		bottom:-15px;
-		border-radius: 0 0 90px 0; 
-
-		@include breakpoint('tablet'){
-			
-			border-radius: 0 0 60px 0;
+			@include breakpoint('tablet'){
+				
+				border-radius: 0 0 60px 0;
+			}
 		}
 	}
 }
-.shadow-img-box{
-	position: relative;
-	.shadow-img-left{
-		border-radius: 0 75px 0 75px; 
-		height: 450px;
-		width:100%;
-		object-fit: cover;
 
-		@include breakpoint('tablet'){
-			height: 350px;
-			border-radius: 0 45px 0 45px;
+.ftr-col-right{
+	.shadow-img-box{
+		position: relative;
+		.shadow-img-post{
+			border-radius:75px 0 75px 0; 
+			height: 450px;
+			width:100%;
+			object-fit: cover;
+
+			@include breakpoint('tablet'){
+				height: 350px;
+				border-radius:45px 0 45px 0;
+			}
+
+			@include breakpoint('small'){
+				height: 240px;
+			}
 		}
-		@include breakpoint('small'){
-			height: 240px;
+
+		.shadow-img-shadow{
+			background: $gradient-light;
+			height:80%;
+			width:80%; 
+			position: absolute;
+			right:-15px;
+			bottom:-15px;
+			border-radius: 0 0  90px 0; 
+
+			@include breakpoint('tablet'){
+				
+				border-radius: 0 0 60px 0;
+			}
 		}
 	}
+}  
 
-	.shadow-img-shadow-left{
-		background: $gradient-light;  
-		height:80%;
-		width:80%; 
-		position: absolute;
-		left:-15px;
-		bottom:-15px;
-		border-radius: 0  0  0 90px;   
 
-		@include breakpoint('tablet'){
-			
-			border-radius: 0 0  0 60px; 
-		}
-	}
+.col-ftr-post{
+	margin-bottom: 50px; 
 }
 
 .shadow-box-content{

@@ -38,6 +38,15 @@ body.woocommerce-account{
 	}
 }
 
+.woocommerce-LostPassword{
+	padding-top: 15px;
+	text-align: center;
+	a{
+		font-weight: 600;
+		text-decoration: none;
+	}
+}
+
 .lost_reset_password{
 	p.woocommerce-form-row{
 		width: 100% !important;
@@ -155,4 +164,33 @@ body.tinvwl-theme-style{
 	}
 
 
+}
+
+.login-form-col-sn,.registration-form-col-sn{
+	border-radius: 45px 0 45px 0;
+}
+.woocommerce form .form-row .woocommerce-form-register__submit{
+	background: $gradient-light;
+}
+.account-adv-item{
+	margin-bottom: 5px;
+	.icon-account-adv{
+		display: flex;
+		align-items: center;
+		width:25px;
+	}
+
+	.label-account-adv{
+		p{
+			font-size: 14px;
+		}
+	}
+}
+.woocommerce form.checkout_coupon, .woocommerce form.login, .woocommerce form.register{
+	margin:0;
+	margin-top: 2em; 
+}
+.woocommerce-privacy-policy-text{
+	padding:15px 0;
+	font-size: 14px;
 }

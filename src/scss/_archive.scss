@@ -12,7 +12,7 @@
 
 	&::after{
 		content:'';
-		position: absolute;
+		position: absolute; 
 		top:0;
 		left:0;
 		bottom:0;
@@ -70,10 +70,10 @@ body.archive.woocommerce{
 
 	del{
 		font-size: 16px;
-		color: #ddd;
+		color: $dark-grey;
 
 		bdi,span{
-			color: #ddd;
+			color: $dark-grey;
 		}
 	}
 }
@@ -120,7 +120,7 @@ body.archive.woocommerce{
 
 	}
 	h2{
-		padding-bottom: 25px;
+		padding-bottom: 10px;
 	}
 
 	button{
@@ -166,6 +166,11 @@ body.archive.woocommerce{
 
 .main-categories-buttons{
 	padding-bottom: 70px;
+
+	@include breakpoint('tablet'){
+		padding-bottom: 20px;
+	}
+
 	ul{
 		list-style-type: none; 
 		padding:0;
@@ -175,6 +180,7 @@ body.archive.woocommerce{
 
 		li{
 			margin-right: 20px;
+			margin-bottom: 15px;
 
 			a{
 				text-decoration: none;
@@ -184,6 +190,7 @@ body.archive.woocommerce{
 				color:$text-color;
 				font-size: 14px;
 				font-weight: 600;
+				display: block;
 			}
 		}
 

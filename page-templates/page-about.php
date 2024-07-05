@@ -26,7 +26,7 @@ get_header('page');
 								Nie sprzedajemy wszystkich pozycji dostępnych na rynku. Jeżeli prowadzimy sprzedaż danej książki, masz 100% pewności, że jest to pozycja wartościowa, do której warto sięgnąć. Gwarantujemy to jako lektorzy i tłumacze z wieloletnim doświadczeniem. Jeżeli nie wiesz, jakiej książki potrzebujesz, od czego zacząć – skontaktuj się z nami. Polecimy odpowiedni podręcznik, dostosowany do preferencji ucznia oraz jego potrzeb.
 								</p>
 
-								<div class="pt-3">
+								<div class="mt-4 pt-2">
 									<a href="#" class="btn btn-bordered">
 										Dowiedz się więcej
 									</a>
