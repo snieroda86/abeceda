@@ -1,4 +1,12 @@
 header#masthead{
+
+	@media(max-width: 991px){
+		position: fixed;
+		top:0;
+		left:0;
+		right:0;
+		z-index: 99;
+	}
 	.header-top-bar{
 		background: $color-primary;
 		padding:12px 0;
@@ -22,6 +30,14 @@ header#masthead{
 	nav.navbar{
 		padding-top: 0;
 		padding-bottom: 0;
+		z-index: 99;
+
+		&.sticky{
+			position: fixed;
+			top:0;
+			left:0;
+			right:0;
+		}
 
 		.header-middle-bar{
 			background: rgb(29,165,189);
@@ -196,6 +212,7 @@ a.wishlist_products_counter{
 	 	font-size: 14px;
 	 	font-weight: 600;
 	 	transition: 0.3s;
+	 	white-space: nowrap;
 
 	 	&:hover{
 	 		color: rgba(255,255,255,0.85);
@@ -205,6 +222,15 @@ a.wishlist_products_counter{
 
 .header-bottom-bar{
 	padding:20px 0; 
+	background: #fff;
+	transition: 0.4s;
+
+	@include breakpoint('medium'){
+		&{
+			padding:0 !important;	
+		}
+		
+	}
 }
 .header-shop-icon-item .wishlist_products_counter::before{
 	display: block !important;
@@ -217,16 +243,34 @@ a.wishlist_products_counter{
   height: 100vh; /* 100% Full-height */
   width: 320px; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
-  z-index: 15; /* Stay on top */
-  top: 135px;
+  z-index: 111; /* Stay on top */
+  top: 0;
   left: auto; 
   right:0;
+  padding-top: 5px;
   margin-right: -360px;   
   background-color: #fff; 
   border:1px solid #ddd;
   overflow-x: hidden; /* Disable horizontal scroll */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
   overflow-y: scroll;
+
+  .sidebar-shopping-cart-header{
+  	padding:15px;
+
+  	h5{
+  		
+  	}
+
+  	#sidebar-sc-close-btn{
+  		text-align: right; 
+
+  		img{
+  			cursor: pointer;
+  			margin-top: -5px;
+  		}
+  	}
+  }
 
   @include breakpoint('phoneH'){
 		&{
@@ -532,11 +576,11 @@ a.wishlist_products_counter{
 .sidebar-cart-overlay{
 	background: rgba(0, 0, 0 , 0.4);
 	position: fixed;
-	top:135px;
+	top:0;
 	left:0;
 	right:0;
 	bottom: 0;
-	z-index: 13;  
+	z-index: 110;  
 	opacity:0;
 	visibility: hidden;
 	transition: 0.5s;
@@ -609,7 +653,7 @@ a.wishlist_products_counter{
 		font-weight: 700;
 
 		&:hover{
-			color: #fff;
+			color: #fff; 
 		}
 
 	}
@@ -626,9 +670,18 @@ a.wishlist_products_counter{
 	box-shadow: none !important;
 
 	@include breakpoint('medium'){
-		margin-right: 12px;
+		margin-right: 12px; 
 	}
 }
+
+
+.navbar-collapse ul.navbar-nav{
+	 @include breakpoint('medium'){
+		padding:25px 0;	
+	}
+	 
+}
+
 
 /* 
 ** Dropdown hover menu

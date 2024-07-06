@@ -8,10 +8,11 @@ jQuery(document).ready(function($) {
   */
   $('.shopping-cart-icon-sidecart').click(openOrCloseNav);
   $('.sidebar-cart-overlay').click(closeNav);
+  $('#sidebar-sc-close-btn img').click(closeNav);
 
   function openOrCloseNav() {
       if ($(this).hasClass('sidebar-open')) {
-          closeNav();
+          closeNav(); 
       } else {
           openNav();
       }

@@ -166,6 +166,16 @@
 
 		<!-- Sidebar - shopping cart -->
 		<div id="shopping-cart-sidebar-sn" class="sidebar-sn">
+			<div class="sidebar-shopping-cart-header d-flex">
+				<div class="col">
+					<h5>Twój koszyk</h5>
+				</div>
+				<div class="col">
+					<div id="sidebar-sc-close-btn">
+						<img src="<?php echo PATH_SN ?>/uploads/close.svg" alt="Zamknij">
+					</div>
+				</div>	
+			</div>
 		    <div>
 		        <div class="minicart-warpper">
 		            <div id="minicart-sn">

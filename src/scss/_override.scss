@@ -21,3 +21,13 @@ body.tinvwl-theme-style table td.product-action a.button span, body.tinvwl-theme
 		color: #fff !important;
 	}
 }
+main#primary{
+	
+  @include breakpoint('medium'){
+    padding-top: 135px !important; 
+  }
+
+	@include breakpoint('small'){
+		padding-top: 118px !important;    
+	} 
+}

@@ -9,20 +9,21 @@ main#primary{
   padding-bottom: 100px;
   overflow-x:hidden;
 }
+
 .container-lg{
   max-width: 1440px !important;
 
   @media(max-width: 1500px){
     width:92%;
   }
-  @include breakpoint('medium'){
+  @include breakpoint('large'){
     width:94%;
   }
-  @include breakpoint('tablet'){
-    width:96%;
+  @include breakpoint('medium'){
+    width:100%;
   }
   @include breakpoint('small'){
-    width:100%;
+    width:100%; 
   }
 }
 .pos-relative{
