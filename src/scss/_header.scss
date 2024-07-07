@@ -11,7 +11,7 @@ header#masthead{
 		background: $color-primary;
 		padding:12px 0;
 
-		@include breakpoint('halfmedium'){
+		@include breakpoint('medium'){
 			display: none;
 		}
 
@@ -56,6 +56,29 @@ header#masthead{
 
 			&:hover{
 				color: lighten($text-color, 35%);
+			}
+
+		}
+
+		.secondary-menu-mobile{
+			border-top: 1px solid #ddd;
+			padding-top: 17px;
+			padding-bottom: 30px;
+			margin-top: -10px;
+
+			ul{
+				list-style-type: none;
+				padding:0;
+				padding-left: 15px;
+
+				li{
+					padding:5px 0;
+				}
+
+				a{
+					text-decoration: none;
+					font-weight: 600;
+				}
 			}
 
 		}

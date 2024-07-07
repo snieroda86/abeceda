@@ -31,3 +31,52 @@ main#primary{
 		padding-top: 118px !important;    
 	} 
 }
+
+@include breakpoint('medium'){
+	.about-img-home{
+		margin-right: 15px;
+	}
+}
+
+@include breakpoint('small'){
+	.tinv-wishlist tfoot .tinvwl-to-left+.tinvwl-to-right{
+		button{
+			width:100%;
+			max-width: 100%;
+		}
+	}
+	.tinv-wishlist .tinv-wishlist-clear{
+		margin-bottom: 0;
+	}
+}
+.wpgs-for .slick-arrow{
+	border:0 !important;
+	background: #fff;
+	border:2px solid $color-primary !important;
+
+	&::before{
+		
+		display: none;
+	}
+
+	&.flaticon-back::before{
+		display: block;
+		content:url(../../uploads/angle-left.svg);
+		margin-top: -4px;
+	}
+	&.flaticon-right-arrow::before{
+		display: block;
+		content:url(../../uploads/angle-right.svg);
+		margin-top: -4px;
+		
+	}
+
+}
+.woocommerce div.product .tinv-wishlist .tinvwl_add_to_wishlist_button.tinvwl-icon-heart-plus.no-txt, .woocommerce div.product .tinv-wishlist .tinvwl_add_to_wishlist_button.tinvwl-icon-heart.no-txt{
+	text-decoration: none;
+
+}
+.woocommerce div.product .tinv-wishlist .tinvwl_add_to_wishlist_button.tinvwl-icon-heart-plus.no-txt:before, .woocommerce div.product .tinv-wishlist .tinvwl_add_to_wishlist_button.tinvwl-icon-heart.no-txt:before{
+	transform:none !important; 
+	position: static !important; 
+}

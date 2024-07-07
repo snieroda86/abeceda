@@ -1,4 +1,8 @@
 .hero-section-home{
+
+	@include breakpoint('medium'){
+		margin-right: 15px; 
+	}
 	
 	.hero-image{
 		height:490px;
@@ -12,6 +16,7 @@
 		@include breakpoint('medium'){ 
 			height:360px;
 			padding:40px 60px;
+
 		}
 
 		.hero-text-area{

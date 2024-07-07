@@ -154,6 +154,20 @@
 					                'walker' => new bootstrap_5_wp_nav_menu_walker()
 					            ));
 					            ?>
+
+					            <div class="secondary-menu-mobile d-block d-lg-none">
+					            	<?php
+						            wp_nav_menu(array(
+						                'theme_location' => 'menu-top-header',
+						                'container' => false,
+						                'menu_class' => '',
+						                'fallback_cb' => '__return_false',
+						                'items_wrap' => '<ul id="%1$s" class="top-nav m-auto  %2$s">%3$s</ul>',
+						                'depth' => 1,
+						                
+						            ));
+						            ?>
+					            </div>
 					        </div>
 			    		</div>
 			    	</div>	

@@ -57,6 +57,26 @@
                     "toolbar": "full",
                     "media_upload": 1,
                     "delay": 0
+                },
+                {
+                    "key": "field_668abcf8102f6",
+                    "label": "Zajrzyj do książki",
+                    "name": "zajrzyj_do_ksiazki",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
                 }
             ]
         }
@@ -79,5 +99,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1719176441
+    "modified": 1720368403
 }

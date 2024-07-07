@@ -254,3 +254,9 @@ section.main-categories-filter{
 .woocommerce ul.products li.product .price ins{
 	text-decoration: none; 
 }
+
+@include breakpoint('medium'){
+	.shop-cat-mobile-img-wrap{
+		margin-right: 15px;
+	}
+}

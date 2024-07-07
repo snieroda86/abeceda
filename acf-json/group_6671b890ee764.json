@@ -23,9 +23,9 @@
             "ui": 1
         },
         {
-            "key": "field_667855b4bc3c1",
-            "label": "Kod EAN",
-            "name": "kod_ean",
+            "key": "field_668aa2b889c9d",
+            "label": "Czas wysyłki",
+            "name": "czas_wysylki_produkt",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -36,37 +36,11 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
+            "default_value": "24 godziny",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
             "append": ""
-        },
-        {
-            "key": "field_667857e239186",
-            "label": "Stan produktu",
-            "name": "stan_produktu",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "nowy": "nowy",
-                "używany": "używany"
-            },
-            "default_value": "nowy",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
         }
     ],
     "location": [
@@ -87,5 +61,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1719163108
+    "modified": 1720361924
 }

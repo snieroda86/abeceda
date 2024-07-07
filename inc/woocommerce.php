@@ -181,7 +181,11 @@ function product_additional_info_table(){
                 </span>
             </th>
             <td>
-                <p><?php _e('24 godziny', 'web14devsn'); ?></p>          
+                <?php if( $czas_wysylki = get_field('czas_wysylki_produkt' , $product->get_id() )): ?>
+                    <p><?php esc_html_e($czas_wysylki); ?></p>
+                <?php else: ?>
+                    <p><?php _e('24 godziny', 'web14devsn'); ?></p>
+                <?php endif; ?>          
             </td>
         </tr>
         <tr>
@@ -206,34 +210,7 @@ function product_additional_info_table(){
             </td>
         </tr>
 
-        <!-- EAN -->
-        <?php if( $ean = get_field('kod_ean' , $product->get_id() )): ?>
-        <tr>
-            <th>
-                <span class="pe-1"><img src="<?php echo PATH_SN ?>/uploads/kod-ean.png" alt="Kod ean"></span>
-                <span>
-                    <?php _e('Kod EAN:', 'web14devsn'); ?>
-                </span>
-            </th>
-            <td>
-                <p><?php echo $ean; ?></p>          
-            </td>
-        </tr>
-        <?php endif; ?>
-        <!-- Stan produktu -->
-        <?php if( $stan_produktu = get_field('stan_produktu' , $product->get_id() )): ?>
-        <tr>
-            <th>
-                <span class="pe-1"><img src="<?php echo PATH_SN ?>/uploads/stan-produktu.png" alt="Stan produktu"></span>
-                <span>
-                    <?php _e('Stan produktu:', 'web14devsn'); ?>
-                </span>
-            </th>
-            <td>
-                <p><?php echo $stan_produktu; ?></p>          
-            </td>
-        </tr>
-        <?php endif; ?>
+       
     </table>
     <?php
 }
@@ -287,11 +264,19 @@ function sn_add_custom_product_tabs( $tabs ) {
     }
 
     // Pliki do pobrania
-     if ( ! empty( $dodatkowe_zakladki_produktu['pliki_do_pobrania_add_tab'] ) ) {
+    if ( ! empty( $dodatkowe_zakladki_produktu['pliki_do_pobrania_add_tab'] ) ) {
         $tabs['pliki_do_pobrania'] = array(
             'title'    => __( 'Do pobrania', 'web14devsn' ),
             'priority' => 20, // TAB SORTING (DESC 10, ADD INFO 20, REVIEWS 30)
             'callback' => 'sn_product_tab_pliki_do_pobrania',
+        );
+    }
+    // Zajrzyj do ksiązki
+    if ( ! empty( $dodatkowe_zakladki_produktu['zajrzyj_do_ksiazki'] ) ) {
+        $tabs['zajrzyj_do_ksiazki'] = array(
+            'title'    => __( 'Zajrzyj do książki', 'web14devsn' ),
+            'priority' => 30, // TAB SORTING (DESC 10, ADD INFO 20, REVIEWS 30)
+            'callback' => 'sn_product_tab_zajrzyj_do_ksiazki',
         );
     }
 
@@ -318,6 +303,17 @@ function sn_product_tab_pliki_do_pobrania() {
     $do_pobrania = $dodatkowe_zakladki_produktu['pliki_do_pobrania_add_tab'];
     if($do_pobrania){
         echo wp_kses_post( $do_pobrania );
+    }
+}
+
+// Zajrzyj do książki callback
+function sn_product_tab_zajrzyj_do_ksiazki() {
+     global $product;
+    $product_id = $product->get_id();
+    $dodatkowe_zakladki_produktu = get_field( 'dodatkowe_zakladki_produktu', $product_id );
+    $zajrzyj_do_ksiazki = $dodatkowe_zakladki_produktu['zajrzyj_do_ksiazki'];
+    if($zajrzyj_do_ksiazki){
+        echo wp_kses_post( $zajrzyj_do_ksiazki );
     }
 }
 

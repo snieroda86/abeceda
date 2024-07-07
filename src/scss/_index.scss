@@ -1,12 +1,16 @@
 .post-pagination-sn{
 	.pagination{
-		padding-top: 100px;
+		padding-top: 20px;
 
 
 		div.nav-links{
 		border:0;
 		display: flex;
-		margin-left: auto;   
+		margin-left: auto;  
+
+		@include breakpoint('tablet'){
+ 			margin:auto;
+ 		} 
 
 			a,span{
 				@include el-center;
@@ -152,5 +156,19 @@
 	}
 	@include breakpoint('small'){
 		
+	}
+}
+
+body.blog{
+	.shop-cat-banner-wrapper .shop-cat-banner-shadow{
+		right:-15px;
+	}
+}
+
+.article-col-sn {
+	margin-bottom: 30px !important;
+
+	@include breakpoint('medium'){
+		margin-bottom: 60px !important;
 	}
 }

@@ -11,7 +11,7 @@ get_header('page');
 
 	<main id="primary" class="site-main page-about">
 		<section  class="section-recent-products woocommerce pt-md-4">
-			<div class="section-wrapper-sn pt-100">
+			<div class="section-wrapper-sn pt-100 pt-m-40">
 				<div class="container-lg">
 					<div class="row g-5">
 						<div class="col-md-6">

@@ -20,7 +20,7 @@
 					</div>
 				</div>
 				<!-- Mobile version -->
-				<div class="col-12 d-sm-none d-block">
+				<div class="col-12 d-sm-none d-block mt-5">
 					<div class="hero-text-area text-center">
 						<h1 class="mb-3">Kraina książek</h1>
 						<p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod ante mauris. Etiam sit amet lobortis velit. Etiam tincidunt fringilla libero.</p>
