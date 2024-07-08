@@ -266,9 +266,8 @@ body .qib-button-wrapper{
 		transition: 0.2s;
 
 		&:hover{
-			background: #fff;
-			color: $text-color;
-			box-shadow: inset 0px 0px 0px 2px rgba(26, 32, 46, 1);
+			background: #8ED2DE;
+			color: $text-color; 
 		}
 	}
 }

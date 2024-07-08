@@ -1,4 +1,4 @@
-<section class="pt-100">
+<section class="pt-100 pt-m-40">
 	<div class="container-lg">
 		<div class="row">
 			<div class="col-12 pos-relative ftr-product-col-wrapper">

@@ -12,7 +12,7 @@ get_header();
 
 	<main id="primary" class="site-main section-bg-grey">
 
-		<div class="container-lg pt-5">
+		<div class="container-lg">
 
 			<!-- Desktop -->
             <div class="shop-cat-banner-wrapper blog-banner-wrapper pos-relative d-sm-block d-none">

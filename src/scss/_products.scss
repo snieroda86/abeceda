@@ -260,3 +260,12 @@ section.main-categories-filter{
 		margin-right: 15px;
 	}
 }
+.mobile-main-cat-filer{
+	.list-group-item{
+		border:0;
+
+		a{
+			text-decoration: none;
+		}
+	}
+}

@@ -12,7 +12,7 @@ get_header();
 
 	<main id="primary" class="site-main section-bg-grey">
 
-		<div class="container-lg pt-5">
+		<div class="container-lg">
 
 			<!-- Desktop -->
             <div class="shop-cat-banner-wrapper blog-banner-wrapper pos-relative d-sm-block d-none">
@@ -39,14 +39,14 @@ get_header();
             <div class="shop-cat-banner-mobile blog-mobile-banner-wrapper pos-relative d-sm-none d-block">
                 <div class="shop-cat-banner-inner">
                     <h1>
-                        Blog
+                        <?php echo single_cat_title(); ?>
                     </h1>
                     
-                        <div class="shop-cat-description">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea</p>
-                        </div>    
+                    <div class="shop-cat-description">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea</p>
+                    </div>    
                    
                 </div> 
                 <div class="shop-cat-mobile-img-wrap pos-relative">

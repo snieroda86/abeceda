@@ -171,6 +171,10 @@ body.tinvwl-theme-style{
 }
 .woocommerce form .form-row .woocommerce-form-register__submit{
 	background: $gradient-light;
+
+	&:hover{
+		background: $gradient-dark;
+	}
 }
 .account-adv-item{
 	margin-bottom: 5px;
