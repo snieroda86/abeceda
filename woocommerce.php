@@ -15,7 +15,15 @@ get_header(); ?>
             <?php if(is_shop()): ?>
             <!-- Desktop -->
             <div class="shop-cat-banner-wrapper pos-relative d-sm-block d-none">
-                <div class="shop-cat-banner" style="background-image: url(<?php echo PATH_SN ?>/uploads/banner-kategoria.jpg);background-size:cover;background-position: right top;">
+                <?php 
+                $obrazek_w_naglowku_sklep = get_field('obrazek_w_naglowku_sklep','option');
+                $opis_w_naglowku_sklep = get_field('opis_w_naglowku_sklep','option');
+
+                if(!$obrazek_w_naglowku_sklep){
+                    $obrazek_w_naglowku_sklep = PATH_SN.'/uploads/banner-kategoria.jpg';
+                }
+                ?>
+                <div class="shop-cat-banner" style="background-image: url(<?php echo esc_url($obrazek_w_naglowku_sklep) ?>);background-size:cover;background-position: right top;">
                     <div class="shop-cat-banner-inner">
                         <h1>
                             <?php 
@@ -25,12 +33,11 @@ get_header(); ?>
                              ?>
 
                         </h1>
+                        <?php if($opis_w_naglowku_sklep): ?>
                         <div class="shop-cat-description">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. </p>
+                            <p><?php echo esc_html($opis_w_naglowku_sklep); ?></p>
                         </div>    
+                        <?php endif; ?>
                     </div> 
                     
                 </div>
@@ -46,15 +53,14 @@ get_header(); ?>
                          ?>
 
                     </h1>
+                    <?php if($opis_w_naglowku_sklep): ?>
                     <div class="shop-cat-description">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. </p>
-                    </div>    
+                        <p><?php echo esc_html($opis_w_naglowku_sklep); ?></p>
+                    </div> 
+                    <?php endif; ?>   
                 </div> 
                 <div class="shop-cat-mobile-img-wrap pos-relative">
-                    <div class="shop-cat-banner" style="background-image: url(<?php echo PATH_SN ?>/uploads/banner-kategoria.jpg);background-size:cover;background-position: right top;">
+                    <div class="shop-cat-banner" style="background-image: url(<?php echo esc_url($obrazek_w_naglowku_sklep) ?>);background-size:cover;background-position: right top;">
                     
                     
                     </div>

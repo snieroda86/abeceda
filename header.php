@@ -32,23 +32,37 @@
 					<div class="col-lg-4 d-lg-block d-none">
 						<div class="header-contact-box d-flex">
 							<!-- Phone  -->
+							<?php 
+							$numer_telefonu_header = get_field('numer_telefonu_header','option');
+							$adres_email_header = get_field('adres_email_header','option');
+
+							?>
+							<?php if( $numer_telefonu_header ): ?>
 							<div class="contact-item-sn d-flex me-4">
 								<div class="d-flex align-items-center pe-2">
 									<img src="<?php echo PATH_SN ?>/uploads/mobile.svg" alt="Phone">
 								</div>
 								<div>
-									<p>+48 8883838</p>
+									<p><a href="tel:<?php echo esc_html($numer_telefonu_header); ?>">
+										<?php echo esc_html($numer_telefonu_header); ?>
+									</a></p>
 								</div>
 							</div>
+							<?php endif; ?>
 							<!-- Email -->
+							<?php if( $adres_email_header ): ?>
 							<div class="contact-item-sn d-flex">
 								<div class="d-flex align-items-center pe-2">
 									<img src="<?php echo PATH_SN ?>/uploads/envelope.svg" alt="Email">
 								</div>
 								<div>
-									<p><a href="mailto:sklep@abeceda.pl">sklep@abeceda.pl</a></p>
+									<p><a href="mailto:<?php echo esc_html($adres_email_header); ?>">
+										<?php echo esc_html($adres_email_header); ?>
+									</a></p>
 								</div>
 							</div>
+							<?php endif; ?>
+
 						</div>
 						
 					</div>

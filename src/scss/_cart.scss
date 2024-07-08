@@ -323,3 +323,15 @@ body.woocommerce-cart {
 .woocommerce .cart-collaterals .cart_totals, .woocommerce-page .cart-collaterals .cart_totals{
 	border-radius: 45px 0 45px 0;
 }
+@include breakpoint('tablet'){
+	body.woocommerce-cart .woocommerce ul#shipping_method{
+		padding-left: 10px; 
+	}
+}
+.newsletter-form-wrapper{
+	form{
+		input[type="email"]{
+			height: 46px;
+		}
+	}
+}

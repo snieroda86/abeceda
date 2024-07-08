@@ -322,27 +322,32 @@ function change_excerpt_more_sn($more) {
 ** ACF Options page
 */
 
+if( function_exists('acf_add_options_page') ) {
 
-// if( function_exists('acf_add_options_page') ) {
+    acf_add_options_page(array(
+        'page_title'    => 'Konfiguracja szablonu',
+        'menu_title'    => 'Konfiguracja szablonu',
+        'menu_slug'     => 'theme-general-settings-sn',
+        'capability'    => 'edit_posts',
+        'redirect'      => false
+    ));
 
-//     acf_add_options_page(array(
-//         'page_title'    => 'Konfiguracja szablonu',
-//         'menu_title'    => 'Konfiguracja szablonu',
-//         'menu_slug'     => 'theme-general-settings-sn',
-//         'capability'    => 'edit_posts',
-//         'redirect'      => false
-//     ));
+    acf_add_options_sub_page(array(
+        'page_title'    => 'Header',
+        'menu_title'    => 'Header',
+        'parent_slug'   => 'theme-general-settings-sn',
+    ));
 
-//     acf_add_options_sub_page(array(
-//         'page_title'    => 'Header',
-//         'menu_title'    => 'Header',
-//         'parent_slug'   => 'theme-general-settings-sn',
-//     ));
+    acf_add_options_sub_page(array(
+        'page_title'    => 'Footer',
+        'menu_title'    => 'Footer',
+        'parent_slug'   => 'theme-general-settings-sn',
+    ));
 
-//     acf_add_options_sub_page(array(
-//         'page_title'    => 'Footer',
-//         'menu_title'    => 'Footer',
-//         'parent_slug'   => 'theme-general-settings-sn',
-//     ));
+    acf_add_options_sub_page(array(
+        'page_title'    => 'Strona sklepu',
+        'menu_title'    => 'Strona sklepu',
+        'parent_slug'   => 'theme-general-settings-sn',
+    ));
 
-// }
+}
