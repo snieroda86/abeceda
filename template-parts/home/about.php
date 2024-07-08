@@ -4,29 +4,31 @@
 			<div class="row g-5">
 				<div class="col-md-6">
 					<h2 class="section-title-sn pb-4">
-						O nas
+						<?php the_field('heading_home_about'); ?>
 					</h2>
 					<div class="about-desc-area">
-						<p>
-							ABECEDA jest centrum językowym świadczącym usługi związane z językiem czeskim (tłumaczenia, kursy językowe, obsługa polskich firm na czeskim rynku), a także sprzedażą książek do nauki rzadkich języków. Nasz zespół tworzą tłumacze, nauczyciele oraz korektorzy – również czescy native speakerzy. Tłumaczymy, uczymy i pomagamy firmom.
-						</p>
-						<p>
-						Nie sprzedajemy wszystkich pozycji dostępnych na rynku. Jeżeli prowadzimy sprzedaż danej książki, masz 100% pewności, że jest to pozycja wartościowa, do której warto sięgnąć. Gwarantujemy to jako lektorzy i tłumacze z wieloletnim doświadczeniem. Jeżeli nie wiesz, jakiej książki potrzebujesz, od czego zacząć – skontaktuj się z nami. Polecimy odpowiedni podręcznik, dostosowany do preferencji ucznia oraz jego potrzeb.
-						</p>
-
+						<?php the_field('desc_home_about'); ?>
+					</div>	
+					<?php 
+					$about_btn_label = get_field('btn_label_home_about');
+					$about_btn_url = get_field('link_btn_home_about');
+					if( $about_btn_label && $about_btn_url ): ?>	
 						<div class="mt-4 pt-2">
-							<a href="#" class="btn btn-bordered">
-								Dowiedz się więcej
+							<a href="<?php echo esc_url($about_btn_url); ?>" class="btn btn-bordered">
+								<?php echo esc_html($about_btn_label); ?>
 							</a>
 						</div>
-					</div>		
+					<?php endif; ?>
+
 				</div>
 
 				<div class="col-md-6">
+					<?php if($home_about_ftr_img = get_field('home_about_ftr_img')): ?>
 					<div class="about-img-home pos-relative">
-						<img class="img-fluid pos-relative z-2 about-img" src="<?php echo PATH_SN ?>/uploads/woman.jpg" alt="O nas">
+						<img class="img-fluid pos-relative z-2 about-img" src="<?php echo esc_url($home_about_ftr_img['url']); ?>" alt="<?php echo esc_attr($home_about_ftr_img['alt']); ?>">
 						<div class="about-img-shadow"></div>
 					</div>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>

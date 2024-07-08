@@ -4,7 +4,7 @@
 			<div class="row">
 				<div class="col-12">
 					<h2 class="section-title-sn pb-4">
-						Polecane
+						<?php the_field('naglowek_sekcji_polecane'); ?>
 					</h2>		
 				</div>
 			</div>
@@ -13,7 +13,11 @@
 				<div class="col-12">
 					<div class="recommended-products-sn-wrapper">
 						<?php
-						function getFeaturedProductsSN($per_page = 8, $order = 'DESC'){
+						$per_page_ftr = get_field('slider_polecane_ilosc');
+						if(!$per_page_ftr){
+							$per_page_ftr = 10;
+						}
+						function getFeaturedProductsSN($per_page_ftr = 10){
 
 							$tax_query = array(
 							    'relation' => 'AND',
@@ -32,7 +36,7 @@
 							    array(
 							        'taxonomy' => 'product_visibility',
 							        'field'    => 'name',
-							        'terms'    => 'exclude-from-catalog', // Dodaj nową kategorię, jeśli używasz tego do ukrywania produktów
+							        'terms'    => 'exclude-from-catalog', 
 							        'operator' => 'NOT IN',
 							    ),
 							);
@@ -41,8 +45,8 @@
 							    'post_type'           => 'product',
 							    'post_status'         => 'publish',
 							    'ignore_sticky_posts' => 1,
-							    'posts_per_page'      => $per_page,
-							    'order'               => $order,
+							    'posts_per_page'      => $per_page_ftr,
+							    'order'               => 'DESC',
 							    'tax_query'           => $tax_query
 							) );
 
@@ -53,7 +57,7 @@
 					    
 					    ?>
 
-					    <?php $getFeaturedProductsSN = getFeaturedProductsSN(); ?>
+					    <?php $getFeaturedProductsSN = getFeaturedProductsSN($per_page_ftr); ?>
 
 					    <!-- check product count -->
 					    <?php if( $getFeaturedProductsSN->found_posts > 4 ): ?>

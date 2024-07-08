@@ -4,7 +4,7 @@
 			<div class="row">
 				<div class="col-12">
 					<h2 class="section-title-sn pb-4">
-						Nowości
+						<?php the_field('naglowek_sekcji_nowosci'); ?>
 					</h2>		
 				</div>
 			</div>
@@ -13,7 +13,11 @@
 				<div class="col-12">
 					<div class="recent-products-sn-wrapper">
 						<?php
-						function getRecentProductsSN($per_page = 10, $order = 'DESC'){
+						$per_page = get_field('slider_nowosci_ilosc');
+						if(!$per_page){
+							$per_page = 10;
+						}
+						function getRecentProductsSN($per_page= 10 ){
 
 						    $tax_query = array(
 						        'relation' => 'AND',
@@ -42,7 +46,7 @@
 						        'ignore_sticky_posts' => 1,
 						        'posts_per_page'      => $per_page,
 						        'orderby'             => 'date', // Sortowanie według daty
-						        'order'               => $order,
+						        'order'               => 'DESC',
 						        'tax_query'           => $tax_query
 						    ) );
 
@@ -53,7 +57,7 @@
 
 					    ?>
 
-					    <?php $getRecentProductsSN = getRecentProductsSN(); ?>
+					    <?php $getRecentProductsSN = getRecentProductsSN( $per_page ); ?>
 
 					    <!-- check product count -->
 					    <?php if( $getRecentProductsSN->found_posts > 4 ): ?>
